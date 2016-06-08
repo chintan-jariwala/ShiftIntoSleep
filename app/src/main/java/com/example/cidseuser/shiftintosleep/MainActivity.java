@@ -10,6 +10,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         // Set the user interface layout for the front page
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.music_activity);
     }
 }
