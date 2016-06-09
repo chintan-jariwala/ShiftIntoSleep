@@ -164,7 +164,7 @@ public class CalenderActivity extends Activity {
             }
             // Lookup view for data population
             TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
-            tvName.setText( schedule.getMonthOfYear() + "/" + schedule.getDay());
+            tvName.setText(schedule.getMonthOfYear() + "/" + schedule.getDay() + "/" + schedule.getYear() + " Start Time:" + schedule.getStartHour() + ":" + schedule.getStartMinute() + " End Time:" + schedule.getEndHour() + ":" + schedule.getEndMinute());
             return convertView;
         }
     }
