@@ -57,7 +57,7 @@ public class CalenderActivity extends Activity {
                     userSchedule = new UserSchedule();
                 }
                 userSchedule.setYear(year);
-                userSchedule.setMonthOfYear(monthOfYear);
+                userSchedule.setMonthOfYear(monthOfYear+1);
                 userSchedule.setDay(dayOfMonth);
 
             }
