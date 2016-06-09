@@ -7,7 +7,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.cidseuser.shiftintosleep.MainActivity">
+    tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
+    android:background="#b0c4de">
 
 
     <ListView
@@ -23,7 +24,8 @@
         android:text="Music- Click to Play"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColor="#000080" />
 </RelativeLayout>
 
 
