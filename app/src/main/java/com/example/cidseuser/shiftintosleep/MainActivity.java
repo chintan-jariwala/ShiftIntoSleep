@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         home.setText("Home");
-        setup.setText("Settings");
+        settings.setText("Settings");
         alarms.setText("Alarms");
         stats.setText("Stats");
         tips.setText("Tips");
