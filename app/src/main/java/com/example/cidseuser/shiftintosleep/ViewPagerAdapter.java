@@ -3,8 +3,6 @@ package com.example.cidseuser.shiftintosleep;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by mlall on 6/9/2016.
@@ -16,11 +14,10 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.i("TESTing", "Position " + position);
         if (position == 0) {
             return new TabFragment();
         } else if (position == 1) {
-            return new SetupFragment();
+            return new SettingsFragment();
         } else if (position == 2) {
             return new AlarmsFragment();
         } else if (position == 3) {

@@ -1,14 +1,11 @@
 package com.example.cidseuser.shiftintosleep;
 
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
-import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -52,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         final TabLayout.Tab home = tabLayout.newTab();
-        final TabLayout.Tab setup = tabLayout.newTab();
+        final TabLayout.Tab settings = tabLayout.newTab();
         final TabLayout.Tab alarms = tabLayout.newTab();
         final TabLayout.Tab stats = tabLayout.newTab();
         final TabLayout.Tab tips = tabLayout.newTab();
@@ -62,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
          */
 
         home.setText("Home");
-        setup.setText("Set Up");
+        setup.setText("Settings");
         alarms.setText("Alarms");
         stats.setText("Stats");
         tips.setText("Tips");
@@ -73,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         the tab layout and likewise for other tabs as well
          */
         tabLayout.addTab(home, 0);
-        tabLayout.addTab(setup, 1);
+        tabLayout.addTab(settings, 1);
         tabLayout.addTab(alarms, 2);
         tabLayout.addTab(stats, 3);
         tabLayout.addTab(tips, 4);
@@ -118,26 +115,5 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-//
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu) {
-//        // Inflate the menu; this adds items to the action bar if it is present.
-//        getMenuInflater().inflate(R.menu.menu_main, menu);
-//        return true;
-//    }
-//
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        // Handle action bar item clicks here. The action bar will
-//        // automatically handle clicks on the Home/Up button, so long
-//        // as you specify a parent activity in AndroidManifest.xml.
-//        int id = item.getItemId();
-//
-//        //noinspection SimplifiableIfStatement
-//        if (id == R.id.action_settings) {
-//            return true;
-//        }
-//
-//        return super.onOptionsItemSelected(item);
-//    }
+
 }

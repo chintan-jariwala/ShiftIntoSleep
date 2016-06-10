@@ -9,9 +9,9 @@ import android.support.v4.app.Fragment;
 /**
  * Created by cidseuser on 6/10/2016.
  */
-public class SetupFragment extends Fragment {
+public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.setup, container, false);
+        return inflater.inflate(R.layout.settings, container, false);
     }
 }
