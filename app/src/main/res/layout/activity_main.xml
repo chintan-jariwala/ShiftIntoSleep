@@ -82,15 +82,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="log in"
-                android:id="@+id/button2"
+                android:id="@+id/loginbutt"
                 android:clickable="true"
-            android:onClick="signInButtonClicked" />
+            android:onClick="addButtonListener" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="sign up"
-            android:id="@+id/button" />
+            android:text="log out"
+            android:id="@+id/buttout"
+            android:clickable="true"
+            android:onClick="signInButtonClicked" />
 
     </LinearLayout>
 
@@ -111,7 +113,7 @@
         <SeekBar
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBar"
+            android:id="@+id/seekBarVolume"
             android:layout_weight="0.96" />
 
     </LinearLayout>
@@ -132,7 +134,7 @@
         <SeekBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBar2"
+            android:id="@+id/seekBarBrightness"
             android:layout_weight="0.75" />
     </LinearLayout>
 
