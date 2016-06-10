@@ -42,7 +42,7 @@ public class MusicListActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(MusicListActivity.this, "Hello " + i, Toast.LENGTH_LONG).show();
+
 
                 String fname="";
                 if (i == 0){
@@ -63,7 +63,13 @@ public class MusicListActivity extends AppCompatActivity {
                 }
 
                 if (musicIndex == i) {
-                    mediaPlayer.pause();
+                    if (mediaPlayer.isPlaying()) { Toast.makeText(MusicListActivity.this, "Playing " + i, Toast.LENGTH_LONG).show();
+                        mediaPlayer.pause();
+                    } else { Toast.makeText(MusicListActivity.this, "Paused " + i, Toast.LENGTH_LONG).show();
+                        mediaPlayer.start();
+
+                    }
+
 
                 } else {
                     int resID=getResources().getIdentifier(fname, "raw", getPackageName());

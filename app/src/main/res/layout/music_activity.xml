@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
-    android:background="#b0c4de">
+    android:background="@drawable/stars">
 
 
     <ListView
@@ -16,7 +16,8 @@
         android:layout_height="wrap_content"
         android:id="@+id/listView"
         android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textSize="30sp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,7 +26,9 @@
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textColor="#000080" />
+        android:textColor="#ffffff"
+        android:textStyle="bold|italic"
+        android:textSize="30dp" />
 </RelativeLayout>
 
 
