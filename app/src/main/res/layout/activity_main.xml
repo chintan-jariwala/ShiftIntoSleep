@@ -135,7 +135,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/seekBarBrightness"
-            android:layout_weight="0.75" />
+            android:layout_weight="0.75"
+            android:max="255" />
     </LinearLayout>
 
 </LinearLayout>

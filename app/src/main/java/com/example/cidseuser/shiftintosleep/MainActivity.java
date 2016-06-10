@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
     private int brightness;
     private ContentResolver cResolver;
     private Window window;
+    private SeekBar brightnessSeekbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +49,48 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         vibrationToggle = (ToggleButton)findViewById(R.id.vib_toggle_button);
-
         addToggleButtonListener();
+
+        brightnessSeekbar = (SeekBar)findViewById(R.id.seekBarBrightness);
+        brightnessSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Log.i("Testing", "Value - " + i);
+
+                cResolver = getContentResolver();
+                window = getWindow();
+
+//                try
+//                {
+//                    Settings.System.putInt(cResolver,
+//                            Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+//                    brightness = Settings.System.getInt(cResolver, Settings.System.SCREEN_BRIGHTNESS);
+//                }
+//                catch (Settings.SettingNotFoundException e)
+//                {
+//                    Log.e("Error", "Cannot access system brightness");
+//                    e.printStackTrace();
+//                }
+
+                Settings.System.putInt(cResolver,
+                        Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+                WindowManager.LayoutParams layoutpars = window.getAttributes();
+                layoutpars.screenBrightness = i / (float)255;
+                window.setAttributes(layoutpars);
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
 
         spinspin = (Spinner)findViewById(R.id.spin_ner);
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
@@ -57,24 +99,7 @@ public class MainActivity extends AppCompatActivity {
         spinspin.setAdapter(adapter);
 
 
-        cResolver = getContentResolver();
-        window = getWindow();
 
-        try
-        {
-            Settings.System.putInt(cResolver,
-                    Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-            brightness = Settings.System.getInt(cResolver, Settings.System.SCREEN_BRIGHTNESS);
-        }
-        catch (Settings.SettingNotFoundException e)
-        {
-            Log.e("Error", "Cannot access system brightness");
-            e.printStackTrace();
-        }
-        Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
-        WindowManager.LayoutParams layoutpars = window.getAttributes();
-        layoutpars.screenBrightness = brightness / (float)255;
-        window.setAttributes(layoutpars);
 
     }
 
