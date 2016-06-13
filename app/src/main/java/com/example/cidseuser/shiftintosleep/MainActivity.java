@@ -53,14 +53,16 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        buildFitnessClient();
+//        buildFitnessClient();
     }
 
     public void editButtonClicked(View view) {
 
-        Intent intent = new Intent(this, CalenderActivity.class);
-        startActivity(intent);
+//        Intent intent = new Intent(this, CalenderActivity.class);
+//        startActivity(intent);
 
+        Intent intent = new Intent(this, Graph.class);
+        startActivity(intent);
     }
 
 
@@ -145,8 +147,8 @@ public class MainActivity extends AppCompatActivity {
                             //Let's register a listener to receive Activity data!
                             if (dataSource.getDataType().equals(DataType.TYPE_HEART_RATE_BPM)
                                     && mListener == null) {
-                                Log.i(TAG, "Data source for LOCATION_SAMPLE found!  Registering.");
-                                registerFitnessDataListener(dataSource, DataType.TYPE_LOCATION_SAMPLE);
+
+                                registerFitnessDataListener(dataSource, DataType.TYPE_HEART_RATE_BPM);
                             }
                         }
                     }

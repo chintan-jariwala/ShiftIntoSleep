@@ -2,15 +2,15 @@
     <string name="app_name">Shift Into Sleep</string>
 
 
-        <string name="age">Age</string>
-        <string name="weight">Weight</string>
-        <string name="height">Height</string>
-        <string name="gender">Gender</string>
-        <string name="personal_data">Personal Data</string>
-        <string name="edit_work_schedule">Edit Work Schedule</string>
-        <string name="night_shift">Night Shift</string>
-        <string name="insomnia">Insomnia</string>
-        <string name="apnea">Apnea</string>
+    <string name="age">Age</string>
+    <string name="weight">Weight</string>
+    <string name="height">Height</string>
+    <string name="gender">Gender</string>
+    <string name="personal_data">Personal Data</string>
+    <string name="edit_work_schedule">Edit Work Schedule</string>
+    <string name="night_shift">Night Shift</string>
+    <string name="insomnia">Insomnia</string>
+    <string name="apnea">Apnea</string>
 
 
 </resources>
