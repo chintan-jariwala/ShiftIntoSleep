@@ -10,22 +10,15 @@ import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
 import android.widget.TextView;
 
-
 /**
  * Created by cidseuser on 6/10/2016.
  */
 public class TipsFragment extends Fragment {
     TextView HyperLink;
     Spanned Text;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.tips, container, false);
-
-    HyperLink = (TextView) findViewById(R.id.tips);
-
-    Text = Html.fromHtml("Sleepwalking <br />" +
-         "<a href='http://www.sleepeducation.org/sleep-disorders-by-category/parasomnias/sleepwalking/overview-facts//'</a>");
-
-    HyperLink.setMovementMethod(LinkMovementMethod.getInstance());
-    HyperLink.setText(Text);}
+    }
 }
