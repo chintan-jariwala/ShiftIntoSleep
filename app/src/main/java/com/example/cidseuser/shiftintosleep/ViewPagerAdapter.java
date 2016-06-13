@@ -23,6 +23,8 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         } else if (position == 3) {
             return new StatsFragment();
         } else if (position == 4) {
+            return new MusicFragment();
+        } else if (position == 5) {
             return new TipsFragment();
         }
         return new TabFragment();
@@ -31,6 +33,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount(){
-        return 5;
+        return 6;
     }
 }
