@@ -10,160 +10,70 @@
     tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
     android:background="@drawable/stars">
 
-    <WebView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/Sleepwalking"
-        android:clickable="true"
-        android:onClick="http://www.sleepeducation.org/sleep-disorders-by-category/parasomnias/sleepwalking/overview-facts"
-        android:contextClickable="true"
-        android:nestedScrollingEnabled="false"
-        android:layout_below="@+id/textView"
-        android:layout_alignParentStart="true"
-        android:background="#fbfafa"
-        android:layout_alignEnd="@+id/textView5" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Sleepwalking"
-        android:id="@+id/textView"
+        android:id="@+id/btnSleepwalking"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:textColor="#fefcfc" />
+        android:clickable="true" />
 
-    <WebView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:clickable="true"
-        android:id="@+id/Insomnia"
-        android:layout_below="@+id/textView2"
-        android:layout_alignParentEnd="true"
-        android:layout_alignStart="@+id/textView2"
-        android:background="#fbfafa"
-        android:onClick="http://www.sleepeducation.org/essentials-in-sleep/insomnia" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Insomina"
-        android:id="@+id/textView2"
-        android:layout_marginTop="27dp"
-        android:textColor="#fefcfc"
-        android:layout_below="@+id/Sleepwalking"
-        android:layout_alignParentEnd="true" />
-
-    <WebView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/NightTerrors"
-        android:layout_below="@+id/textView3"
-        android:layout_alignParentStart="true"
-        android:clickable="true"
-        android:layout_alignEnd="@+id/textView3"
-        android:background="#fbfafa"
-        android:onClick="http://www.mayoclinic.org/diseases-conditions/night-terrors/basics/symptoms/con-20032552" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Night Terrors"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/Insomnia"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="24dp"
-        android:textColor="#fefcfc" />
-
-    <WebView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/Narcolepsy"
-        android:clickable="true"
-        android:layout_below="@+id/textView4"
-        android:layout_alignEnd="@+id/Insomnia"
-        android:layout_alignStart="@+id/textView4"
-        android:background="#fbfafa"
-        android:onClick="http://www.webmd.com/sleep-disorders/guide/narcolepsy" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Narcolepsy"
-        android:id="@+id/textView4"
-        android:layout_marginTop="29dp"
-        android:textColor="#fefcfc"
-        android:layout_below="@+id/NightTerrors"
-        android:layout_alignParentEnd="true" />
-
-    <WebView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/SleepApnea"
-        android:layout_below="@+id/textView5"
-        android:layout_alignParentStart="true"
-        android:clickable="true"
-        android:layout_alignEnd="@+id/NightTerrors"
-        android:background="#fbfafa"
-        android:onClick="http://www.webmd.com/sleep-disorders/guide/understanding-obstructive-sleep-apnea-syndrome" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Sleep Apnea"
-        android:id="@+id/textView5"
-        android:layout_below="@+id/Narcolepsy"
+        android:id="@+id/btnSleepApnea"
+        android:layout_below="@+id/btnSleepwalking"
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insomnia"
+        android:id="@+id/btnInsomnia"
+        android:layout_below="@+id/btnSleepApnea"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="41dp"
+        android:clickable="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Night Terrors"
+        android:id="@+id/btnNightTerrors"
+        android:layout_below="@+id/btnJetLag"
         android:layout_alignParentStart="true"
         android:layout_marginTop="35dp"
-        android:textColor="#fefcfc" />
+        android:clickable="true" />
 
-    <WebView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/RestlessLegsSyndrome"
-        android:clickable="true"
-        android:layout_below="@+id/textView6"
-        android:layout_alignEnd="@+id/textView6"
-        android:layout_alignStart="@+id/textView6"
-        android:background="#fbfafa"
-        android:onClick="http://www.webmd.com/brain/restless-legs-syndrome/restless-legs-syndrome-rls" />
+        android:text="Narcolepsy"
+        android:id="@+id/btnNarcolepsy"
+        android:layout_marginTop="33dp"
+        android:layout_below="@+id/btnNightTerrors"
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
 
-    <TextView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Restless Legs Syndrome"
-        android:id="@+id/textView6"
-        android:layout_marginTop="37dp"
-        android:textColor="#fefcfc"
-        android:layout_below="@+id/SleepApnea"
-        android:layout_alignEnd="@+id/Insomnia" />
+        android:text="Restless Legs Syndrome "
+        android:id="@+id/btnRestlessLegsSyndrome"
+        android:layout_marginTop="29dp"
+        android:layout_below="@+id/btnNarcolepsy"
+        android:layout_alignEnd="@+id/btnNightTerrors"
+        android:clickable="true" />
 
-    <WebView
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/JetLag"
-        android:layout_below="@+id/textView7"
-        android:layout_alignParentStart="true"
-        android:clickable="true"
-        android:layout_alignEnd="@+id/textView7"
-        android:background="#fbfafa"
-        android:onClick="http://www.webmd.com/sleep-disorders/excessive-sleepiness-10/jet-lag-remedies" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text=" Jet Lag"
-        android:id="@+id/textView7"
-        android:layout_below="@+id/RestlessLegsSyndrome"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp"
-        android:autoText="false"
-        android:textColor="#fefcfc" />
-
+        android:text="Jet Lag"
+        android:id="@+id/btnJetLag"
+        android:layout_below="@+id/btnInsomnia"
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
 </RelativeLayout>
