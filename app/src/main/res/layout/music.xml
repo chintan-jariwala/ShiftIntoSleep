@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
+    android:background="@drawable/stars"
+    android:contextClickable="true">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Music"
+        android:id="@+id/button"
+        android:onClick="buttonClicked"
+        android:textColor="#433558"
+        android:layout_above="@+id/editText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="40dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/editText"
+        android:text="Lullabies aren&apos;t just for babies, they are perfect for adults too. Listening to relaxing music before bed is proven to help with disorders by improving sleep quality and quantity. Relaxing before sleeping helps your brain produces organized theta waves which make you feel as if you are lightly dreaming. After ten minutes of this, your brain produces sleep spindles and K complexes which are in stage 2 of NREM, considered sleeping. "
+        android:textColor="#ffffff"
+        android:maxWidth="600dp"
+        android:gravity="center"
+        android:layout_marginBottom="74dp"
+        android:textStyle="bold|italic"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:enabled="false"
+        android:editable="false"
+        android:inputType="none"  />
+
+</RelativeLayout>

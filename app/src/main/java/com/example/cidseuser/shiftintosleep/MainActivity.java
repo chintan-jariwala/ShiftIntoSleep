@@ -52,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         final TabLayout.Tab settings = tabLayout.newTab();
         final TabLayout.Tab alarms = tabLayout.newTab();
         final TabLayout.Tab stats = tabLayout.newTab();
+        final TabLayout.Tab music = tabLayout.newTab();
         final TabLayout.Tab tips = tabLayout.newTab();
 
         /*
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         settings.setText("Settings");
         alarms.setText("Alarms");
         stats.setText("Stats");
+        music.setText("Music");
         tips.setText("Tips");
 
         /*
@@ -73,7 +75,8 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(settings, 1);
         tabLayout.addTab(alarms, 2);
         tabLayout.addTab(stats, 3);
-        tabLayout.addTab(tips, 4);
+        tabLayout.addTab(music, 4);
+        tabLayout.addTab(tips, 5);
 
         /*
         TabTextColor sets the color for the title of the tabs, passing a ColorStateList here makes
