@@ -15,11 +15,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MusicListActivity"></activity>
+        <activity android:name=".Noisedeector"></activity>
 
-
-        <activity android:name=".MusicListActivity">
-
-        </activity>
+        <service android:name=".recorderservice"></service>
     </application>
 
 </manifest>

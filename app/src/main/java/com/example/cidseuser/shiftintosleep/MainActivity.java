@@ -13,6 +13,11 @@ public class MainActivity extends AppCompatActivity {
 
         // Set the user interface layout for the front page
         setContentView(R.layout.activity_main);
+
+
+        Intent intent = new Intent(this, recorderservice.class);
+        startService(intent);
+
     }
     public void buttonClicked (View view) {
         Intent intent = new Intent(this, MusicListActivity.class);
