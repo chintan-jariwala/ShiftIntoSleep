@@ -1,5 +1,6 @@
 package com.example.cidseuser.shiftintosleep;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,11 @@ public class MusicFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.music, container, false);
+        super.onCreate(savedInstanceState);
+    }
+
+    public void music(View view) {
+        Intent intent = new Intent(this, MusicListActivity.class);
+        startActivity(intent);
     }
 }

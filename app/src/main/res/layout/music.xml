@@ -8,19 +8,18 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
-    android:background="@drawable/stars"
-    android:contextClickable="true">
+    android:background="@drawable/stars">
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Music"
-        android:id="@+id/button"
-        android:onClick="buttonClicked"
         android:textColor="#433558"
+        android:id="@+id/btnMusic"
         android:layout_above="@+id/editText"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
+        android:layout_marginBottom="40dp"
+        android:clickable="true" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -35,7 +34,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:enabled="false"
-        android:editable="false"
         android:inputType="none"  />
 
 </RelativeLayout>
