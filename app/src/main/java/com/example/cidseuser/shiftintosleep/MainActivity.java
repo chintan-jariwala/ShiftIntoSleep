@@ -1,10 +1,13 @@
 package com.example.cidseuser.shiftintosleep;
 
 import android.content.ContentResolver;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Vibrator;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +30,8 @@ public class MainActivity extends AppCompatActivity {
     private ContentResolver cResolver;
     private Window window;
     private SeekBar brightnessSeekbar;
+    private SeekBar volumeSeekbar;
+    private AudioManager audio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,33 +56,10 @@ public class MainActivity extends AppCompatActivity {
         vibrationToggle = (ToggleButton)findViewById(R.id.vib_toggle_button);
         addToggleButtonListener();
 
-        brightnessSeekbar = (SeekBar)findViewById(R.id.seekBarBrightness);
-        brightnessSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        volumeSeekbar = (SeekBar)findViewById(R.id.seekBarVolume);
+        volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.i("Testing", "Value - " + i);
-
-                cResolver = getContentResolver();
-                window = getWindow();
-
-//                try
-//                {
-//                    Settings.System.putInt(cResolver,
-//                            Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-//                    brightness = Settings.System.getInt(cResolver, Settings.System.SCREEN_BRIGHTNESS);
-//                }
-//                catch (Settings.SettingNotFoundException e)
-//                {
-//                    Log.e("Error", "Cannot access system brightness");
-//                    e.printStackTrace();
-//                }
-
-                Settings.System.putInt(cResolver,
-                        Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
-                WindowManager.LayoutParams layoutpars = window.getAttributes();
-                layoutpars.screenBrightness = i / (float)255;
-                window.setAttributes(layoutpars);
 
             }
 
@@ -89,6 +71,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
 
+            }
+        });
+
+
+
+        brightnessSeekbar = (SeekBar)findViewById(R.id.seekBarBrightness);
+        brightnessSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+                Log.i("Testing", "Value - " + i);
+
+                cResolver =   MainActivity.this.getApplicationContext().getContentResolver(); //getContentResolver();
+                window = getWindow();
+
+
+
+                Settings.System.putInt(cResolver,
+                        Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+                WindowManager.LayoutParams layoutpars = window.getAttributes();
+                layoutpars.screenBrightness = i / (float)255;
+                window.setAttributes(layoutpars);
+
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Intent intent = new Intent(MainActivity.this, DummyActivity.class);
+                MainActivity.this.startActivity(intent);
             }
         });
 
@@ -114,11 +131,16 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean("vibrateon", isChecked);
 
                 editor.commit();
+                Vibrator v = (Vibrator) MainActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
+                // Vibrate for 500 milliseconds
+                v.vibrate(500);
+
             }
 
         });
 
     }
+
     public void addButtonListener(View view){
         Intent intent = new Intent(this, LoginActivity.class);
         startActivity(intent);

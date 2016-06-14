@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
 
     <application
@@ -23,6 +24,10 @@
         </activity>
         <activity
             android:name=".LoginActivity"
+            android:label="@string/title_activity_login"></activity>
+
+        <activity
+            android:name=".DummyActivity"
             android:label="@string/title_activity_login"></activity>
     </application>
 
