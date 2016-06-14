@@ -55,6 +55,7 @@ public class recorderservice extends Service {
                 @Override
                 public void run() {
                    double amp = getAmplitude();
+//                    Toast.makeText(recorderservice.this,"Amplitude - " + amp, Toast.LENGTH_SHORT).show();
                     Log.i("TAG", "Amplitude - " + amp);
                 }
 

@@ -14,38 +14,11 @@ public class Noisedeector extends AppCompatActivity {
         setContentView(R.layout.activity_noisedeector);
     }
 
-    private MediaRecorder mRecorder = null;
-
-    public void start() {
-        if (mRecorder == null) {
-            mRecorder = new MediaRecorder();
-            mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
-            mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
-            mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
-            mRecorder.setOutputFile("/dev/null");
-
-            try {
-
-                mRecorder.prepare();
-
-            } catch (IOException exception) {
-                //Recorder could not be started
-
-            }
 
 
-            mRecorder.start();
-        }
-    }
 
-    public void stop() {
-        if (mRecorder != null) {
-            mRecorder.stop();
-            mRecorder.release();
-            mRecorder = null;
 
         }
-    }
 
 
-}
+
