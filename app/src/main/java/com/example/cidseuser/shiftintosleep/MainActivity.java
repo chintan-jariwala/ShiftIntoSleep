@@ -50,9 +50,13 @@ public class MainActivity extends AppCompatActivity {
                     Log.i(TAG, "Detected DataPoint field: " + field.getName());
                     Log.i(TAG, "Detected DataPoint value: " + val);
                 }
+
             }
         };
 
+
+        Intent intent = new Intent(this, accelerometerservice.class);
+        startService(intent);
 //        buildFitnessClient();
     }
 

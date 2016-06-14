@@ -15,8 +15,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CalenderActivity"></activity>
-        <activity android:name=".Graph"></activity>
+        <activity android:name=".CalenderActivity" />
+        <activity android:name=".Graph" />
+        <service android:name=".accelerometerservice"></service>
     </application>
 
 </manifest>

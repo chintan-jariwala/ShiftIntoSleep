@@ -39,6 +39,8 @@ public class Graph extends AppCompatActivity {
         series.add(10,34);
         series.add(10,34);
         series.add(10,34);
+        series.add(115,47);
+        series.add(200,82);
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
         dataset.addSeries(series);
 
@@ -58,6 +60,11 @@ public class Graph extends AppCompatActivity {
         mRenderer.setPanEnabled(true, false);
         mRenderer.setYAxisMax(100);
         mRenderer.setYAxisMin(0);
+
+        int xmax = 200; /* Collections.max(arrayList); */
+        int  xmin = xmax - 168;
+        mRenderer.setXAxisMin(xmin);
+        mRenderer.setXAxisMax(xmax);
         mRenderer.setShowGrid(true); // we show the grid
         mRenderer.setXTitle("Time");
         mRenderer.setAxisTitleTextSize(40);
