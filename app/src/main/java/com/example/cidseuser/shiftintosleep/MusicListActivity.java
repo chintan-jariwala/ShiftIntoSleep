@@ -1,9 +1,8 @@
 package com.example.cidseuser.shiftintosleep;
 
+import android.app.Activity;
 import android.media.MediaPlayer;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,9 +14,9 @@ import java.io.File;
 // Array of options --} ArrayAdapter --} ListView
 // List view: {views: da_items.xml}
 
-public class MusicListActivity extends AppCompatActivity {
+public class MusicListActivity extends Activity {
 
-    private MediaPlayer mediaPlayer;
+    private MediaPlayer MediaPlayer;
     private int musicIndex = -1;
 
     @Override
@@ -37,43 +36,43 @@ public class MusicListActivity extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                String fname="";
+                String frame="";
                 if (i == 0){
-                    fname = "relaxing_lullaby";
+                    frame = "relaxing_lullaby";
                 } else if (i==1) {
-                    fname = "waterfall_sounds";
+                    frame = "waterfall_sounds";
                 } else if (i==2) {
-                    fname = "rainforest_stream";
+                    frame = "rainforest_stream";
                 } else if (i==3) {
-                    fname = "ocean_waves";
+                    frame = "ocean_waves";
                 } else if (i==4) {
-                    fname = "piano_music";
+                    frame = "piano_music";
                 } else if (i==5) {
-                    fname = "violin";
+                    frame = "violin";
                 }
 
                 if (musicIndex == i) {
-                    if (mediaPlayer.isPlaying()) { Toast.makeText(MusicListActivity.this, "Playing " + i, Toast.LENGTH_LONG).show();
-                        mediaPlayer.pause();
+                    if (MediaPlayer.isPlaying()) { Toast.makeText(MusicListActivity.this, "Playing " + i, Toast.LENGTH_LONG).show();
+                        MediaPlayer.pause();
                     } else { Toast.makeText(MusicListActivity.this, "Paused " + i, Toast.LENGTH_LONG).show();
-                        mediaPlayer.start();
+                        MediaPlayer.start();
                     }
 
                 } else {
-                    int resID=getResources().getIdentifier(fname, "raw", getPackageName());
-                    if(mediaPlayer != null && mediaPlayer.isPlaying()) {
-                        mediaPlayer.stop();
+                    int resID=getResources().getIdentifier(frame, "raw", getPackageName());
+                    if(MediaPlayer != null && MediaPlayer.isPlaying()) {
+                        MediaPlayer.stop();
                     }
 
-                    mediaPlayer = MediaPlayer.create(MusicListActivity.this,resID);
-                    mediaPlayer.start();
+                    MediaPlayer = MediaPlayer.create(MusicListActivity.this,resID);
+                    MediaPlayer.start();
                 }
 
                 musicIndex = i;
             }
         });}
 
-    public void audioPlayer(String path, String fileName){
+    public void MediaPlayer(String path, String fileName){
         //set up MediaPlayer
         MediaPlayer mp = new MediaPlayer();
         try {

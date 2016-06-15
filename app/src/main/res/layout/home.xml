@@ -7,10 +7,23 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="This is where the Home page will go."
+        android:text="Helping you sleep since 2016"
         android:id="@+id/textView"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:textColor="#ffffff"
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true"
+        android:background="#060505" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Shift Into Sleep"
+        android:id="@+id/textView2"
+        android:textColor="@color/foreground_material_dark"
+        android:textColorHighlight="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="26dp"  />
 
 </RelativeLayout>
