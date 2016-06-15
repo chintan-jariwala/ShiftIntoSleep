@@ -46,7 +46,6 @@ public class recorderservice extends Service {
 
             }
 
-
             mRecorder.start();
 
 
@@ -69,7 +68,6 @@ public class recorderservice extends Service {
         return super.onStartCommand(intent, flags, startId);
 
     }
-
     @Override
     public void onDestroy() {
         super.onDestroy();
@@ -81,7 +79,6 @@ public class recorderservice extends Service {
 
         }
     }
-
 
     public double getAmplitude() {
         if (mRecorder != null)
