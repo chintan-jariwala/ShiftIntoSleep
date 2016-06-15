@@ -37,7 +37,7 @@ import java.util.Date;
         sm = (SensorManager)getSystemService(SENSOR_SERVICE);
         sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI);
+        sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
 
 
     }

@@ -81,7 +81,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<Double> getAllCotacts()
+    public ArrayList<Double> getAllAccelerometer()
     {
         ArrayList<Double> array_list = new ArrayList<Double>();
 

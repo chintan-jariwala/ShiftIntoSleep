@@ -20,10 +20,13 @@ public class MainActivity extends AppCompatActivity {
         // Set the user interface layout for the front page
         setContentView(R.layout.activity_personal_data);
 
-        Intent intent = new Intent(this, accelerometerservice.class);
-        startService(intent);
-        DatabaseOperations db = new DatabaseOperations(this);
-        db.putUserInformation("xyxz", "123");
+//        Intent intent = new Intent(this, accelerometerservice.class);
+//        startService(intent);
+//        DatabaseOperations db = new DatabaseOperations(this);
+//        db.putUserInformation("xyxz", "123");
+
+        Intent intent = new Intent(this, Graph.class);
+        startActivity(intent);
 
 //        buildFitnessClient();
     }

@@ -3,6 +3,7 @@ package com.example.cidseuser.shiftintosleep;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.ScrollView;
@@ -16,6 +17,8 @@ import org.achartengine.model.XYSeries;
 import org.achartengine.renderer.XYMultipleSeriesRenderer;
 import org.achartengine.renderer.XYSeriesRenderer;
 
+import java.util.ArrayList;
+
 public class Graph extends AppCompatActivity {
 
     @Override
@@ -26,21 +29,17 @@ public class Graph extends AppCompatActivity {
     }
 
     private void showGraphView() {
+
+        DatabaseOperations db = new DatabaseOperations(this);
+        ArrayList<Double> list  = db.getAllAccelerometer();
         XYSeries series = new XYSeries("Noise Levels (amp)");
-        series.add(10,34);
-        series.add(10,45);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(20,34);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(10,34);
-        series.add(115,47);
-        series.add(200,82);
+        for (Double xvalue : list) {
+            Log.i("Acc", "X - " + xvalue);
+            series.add(12,xvalue);
+        }
+
+
+
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
         dataset.addSeries(series);
 
@@ -63,8 +62,8 @@ public class Graph extends AppCompatActivity {
 
         int xmax = 200; /* Collections.max(arrayList); */
         int  xmin = xmax - 168;
-        mRenderer.setXAxisMin(xmin);
-        mRenderer.setXAxisMax(xmax);
+        mRenderer.setXAxisMin(0);
+        mRenderer.setXAxisMax(15);
         mRenderer.setShowGrid(true); // we show the grid
         mRenderer.setXTitle("Time");
         mRenderer.setAxisTitleTextSize(40);
