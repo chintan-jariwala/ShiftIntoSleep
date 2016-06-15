@@ -5,6 +5,8 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.media.AudioManager;
 import android.net.Uri;
 import android.os.Build;
@@ -12,6 +14,7 @@ import android.os.Vibrator;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +25,8 @@ import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.ToggleButton;
+
+import java.util.Locale;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -64,6 +69,38 @@ public class MainActivity extends AppCompatActivity {
                 R.array.language_array, android.R.layout.simple_spinner_item);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinspin.setAdapter(adapter);
+        spinspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String languageToLoad = "en";
+                if (i == 0) {
+                    Log.i("Spinner", "English");
+                    languageToLoad = "en";
+                } else if (i==1) {
+                    Log.i("Spinner", "Chinese");
+                    languageToLoad = "zh";
+                } else if (i == 2){
+                    Log.i("Spinner", "Spanish");
+                    languageToLoad =  "es";
+                }
+
+
+
+                Resources res = getResources();
+                // Change locale settings in the app.
+                DisplayMetrics dm = res.getDisplayMetrics();
+                android.content.res.Configuration conf = res.getConfiguration();
+                conf.locale = new Locale(languageToLoad);
+                res.updateConfiguration(conf, dm);
+
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
 
 

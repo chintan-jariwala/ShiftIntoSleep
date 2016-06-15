@@ -9,28 +9,20 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
     android:orientation="vertical"
-    android:weightSum="1">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/settings"
-        android:id="@+id/textView"
-        android:layout_weight="0.15" />
+    android:weightSum="1"
+    android:id="@+id/rootView">
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:layout_weight="0.06">
+        android:baselineAligned="false">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Vibration"
+            android:text="@string/vibration"
             android:id="@+id/textView2"/>
 
         <ToggleButton
@@ -47,20 +39,18 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="0.15">
+        android:layout_height="wrap_content">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Language"
-            android:id="@+id/textView3"
-            android:layout_marginTop="31dp"/>
+            android:id="@+id/textView3"/>
 
         <Spinner
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="49dp"
             android:id="@+id/spin_ner" />
 
     </LinearLayout>
@@ -69,7 +59,7 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0.20">
+        android:layout_weight="0.12">
 
         <TextView
             android:layout_width="wrap_content"
@@ -97,7 +87,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:weightSum="1"
@@ -107,19 +97,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Volume"
+            android:text="Alarm Volume"
             android:id="@+id/textView5" />
 
         <SeekBar
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/seekBarVolume"
-            android:layout_weight="0.96" />
+            android:id="@+id/seekBarVolume" />
 
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="63dp"
         android:layout_weight="0.06">
@@ -132,10 +121,9 @@
             android:id="@+id/textView6" />
 
         <SeekBar
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/seekBarBrightness"
-            android:layout_weight="0.75"
             android:max="255" />
     </LinearLayout>
 
