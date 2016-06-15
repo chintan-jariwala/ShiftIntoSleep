@@ -1,5 +1,6 @@
 package com.example.cidseuser.shiftintosleep;
 
+import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
@@ -31,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Window window;
     private SeekBar brightnessSeekbar;
     private SeekBar volumeSeekbar;
-    private AudioManager audio;
+    private AudioManager audioManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,23 +58,13 @@ public class MainActivity extends AppCompatActivity {
         vibrationToggle = (ToggleButton)findViewById(R.id.vib_toggle_button);
         addToggleButtonListener();
 
-        volumeSeekbar = (SeekBar)findViewById(R.id.seekBarVolume);
-        volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
 
-            }
+        spinspin= (Spinner)findViewById(R.id.spin_ner);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.language_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinspin.setAdapter(adapter);
 
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-
-            }
-        });
 
 
 
@@ -109,16 +101,38 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        spinspin = (Spinner)findViewById(R.id.spin_ner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.language_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinspin.setAdapter(adapter);
+        this.setVolumeControlStream(AudioManager.STREAM_ALARM);
+
+
+        initControls();}
+                private void initControls(){
+                audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+        volumeSeekbar = (SeekBar)findViewById(R.id.seekBarVolume);
+        volumeSeekbar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM));
+        try {
+            volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                public void onStopTrackingTouch(SeekBar arg0) {
+
+                }
+
+                public void onStartTrackingTouch(SeekBar arg0) {
+
+                }
+
+                public void onProgressChanged(SeekBar arg0, int progress, boolean arg2) {
+                    audioManager.setStreamVolume(AudioManager.STREAM_ALARM, progress, 0);
+
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }}
 
 
 
 
-    }
+
+
 
     private void addToggleButtonListener() {
 
@@ -130,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = settings.edit();
                 editor.putBoolean("vibrateon", isChecked);
 
-                editor.commit();
+                editor.apply();
                 Vibrator v = (Vibrator) MainActivity.this.getSystemService(Context.VIBRATOR_SERVICE);
                 // Vibrate for 500 milliseconds
                 v.vibrate(500);
@@ -140,6 +154,24 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
+
+    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
+
+        public void onItemSelected(AdapterView<?> parent, View view,
+                                   int pos, long id) {
+            // An item was selected. You can retrieve the selected item using
+            // parent.getItemAtPosition(pos)
+        }
+
+        public void onNothingSelected(AdapterView<?> parent) {
+            // Another interface callback
+        }
+    }
+
+
+
+
+
 
     public void addButtonListener(View view){
         Intent intent = new Intent(this, LoginActivity.class);
