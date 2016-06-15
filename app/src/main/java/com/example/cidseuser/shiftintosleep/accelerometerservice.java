@@ -13,6 +13,8 @@ import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Date;
+
 /**
  * Created by cidseuser on 6/14/2016.
  */
@@ -21,8 +23,6 @@ import android.widget.Toast;
     Sensor sensor;
     SensorManager sm;
     MediaPlayer mPlayer;
-
-
 
     @Nullable
     @Override
@@ -37,7 +37,7 @@ import android.widget.Toast;
         sm = (SensorManager)getSystemService(SENSOR_SERVICE);
         sensor = sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
 
-        sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        sm.registerListener(this, sensor, SensorManager.SENSOR_DELAY_UI);
 
 
     }
@@ -59,6 +59,10 @@ import android.widget.Toast;
     public void onSensorChanged(SensorEvent event) {
         //displayReading.setText("X"+event.values[0]"Y"+event"Z")
         Log.i("Accelorometer sensor","X"+event.values[0]+"\nY"+event.values[1]+"\nZ"+event.values[2]);
+
+        Date date = new Date();
+        DatabaseOperations db = new DatabaseOperations(this);
+        db.putUserAccelerometer("userName", event.values[0], event.values[1], event.values[2], date.toString());
     }
 
     @Override
