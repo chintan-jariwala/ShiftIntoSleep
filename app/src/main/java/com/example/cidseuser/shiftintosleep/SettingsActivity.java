@@ -53,7 +53,7 @@ public class SettingsActivity extends AppCompatActivity {
         }
 
         // Set the user interface layout for the front page
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_settings);
 
 
 
