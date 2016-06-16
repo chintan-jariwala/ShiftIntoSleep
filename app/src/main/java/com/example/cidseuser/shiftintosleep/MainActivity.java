@@ -21,6 +21,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.Spinner;
@@ -32,13 +33,15 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private ToggleButton vibrationToggle;
-    private Spinner spinspin;
     private int brightness;
     private ContentResolver cResolver;
     private Window window;
     private SeekBar brightnessSeekbar;
     private SeekBar volumeSeekbar;
+    private SeekBar musicVolume;
     private AudioManager audioManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,48 +63,12 @@ public class MainActivity extends AppCompatActivity {
         // Set the user interface layout for the front page
         setContentView(R.layout.activity_main);
 
+
+
+
+
         vibrationToggle = (ToggleButton)findViewById(R.id.vib_toggle_button);
         addToggleButtonListener();
-
-
-        spinspin= (Spinner)findViewById(R.id.spin_ner);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.language_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinspin.setAdapter(adapter);
-        spinspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                String languageToLoad = "en";
-                if (i == 0) {
-                    Log.i("Spinner", "English");
-                    languageToLoad = "en";
-                } else if (i==1) {
-                    Log.i("Spinner", "Chinese");
-                    languageToLoad = "zh";
-                } else if (i == 2){
-                    Log.i("Spinner", "Spanish");
-                    languageToLoad =  "es";
-                }
-
-
-
-                Resources res = getResources();
-                // Change locale settings in the app.
-                DisplayMetrics dm = res.getDisplayMetrics();
-                android.content.res.Configuration conf = res.getConfiguration();
-                conf.locale = new Locale(languageToLoad);
-                res.updateConfiguration(conf, dm);
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
 
 
 
@@ -139,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         this.setVolumeControlStream(AudioManager.STREAM_ALARM);
+        this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
 
         initControls();}
@@ -146,6 +114,8 @@ public class MainActivity extends AppCompatActivity {
                 audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
         volumeSeekbar = (SeekBar)findViewById(R.id.seekBarVolume);
         volumeSeekbar.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_ALARM));
+        musicVolume = (SeekBar)findViewById(R.id.seekBarMusic);
+        musicVolume.setMax(audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         try {
             volumeSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                 public void onStopTrackingTouch(SeekBar arg0) {
@@ -158,6 +128,20 @@ public class MainActivity extends AppCompatActivity {
 
                 public void onProgressChanged(SeekBar arg0, int progress, boolean arg2) {
                     audioManager.setStreamVolume(AudioManager.STREAM_ALARM, progress, 0);
+
+                }
+            });
+            musicVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+                public void onStopTrackingTouch(SeekBar arg0) {
+
+                }
+
+                public void onStartTrackingTouch(SeekBar arg0) {
+
+                }
+
+                public void onProgressChanged(SeekBar arg0, int progress, boolean arg2) {
+                    audioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
 
                 }
             });
@@ -192,18 +176,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public class SpinnerActivity extends Activity implements AdapterView.OnItemSelectedListener {
 
-        public void onItemSelected(AdapterView<?> parent, View view,
-                                   int pos, long id) {
-            // An item was selected. You can retrieve the selected item using
-            // parent.getItemAtPosition(pos)
-        }
-
-        public void onNothingSelected(AdapterView<?> parent) {
-            // Another interface callback
-        }
-    }
 
 
 
@@ -216,6 +189,14 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    public void addLangButtonListener (View view){
+        finish();
+        Intent intent = new Intent(this, LanguageActivity.class);
+        startActivity(intent);
+    }
+
+
 
 
 }

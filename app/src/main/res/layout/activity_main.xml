@@ -16,7 +16,8 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:baselineAligned="false">
+        android:baselineAligned="false"
+        android:layout_weight="0.08">
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,8 +29,8 @@
         <ToggleButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textOn="on"
-            android:textOff="off"
+            android:textOn="@string/on"
+            android:textOff="@string/off"
             android:id="@+id/vib_toggle_button"
             android:checked="false"
             android:longClickable="false"/>
@@ -37,21 +38,25 @@
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:orientation="horizontal"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.10">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Language"
+            android:text="@string/language"
             android:id="@+id/textView3"/>
 
-        <Spinner
+        <Button
             android:layout_width="wrap_content"
-            android:layout_height="49dp"
-            android:id="@+id/spin_ner" />
+            android:layout_height="wrap_content"
+            android:text="@string/change"
+            android:id="@+id/Langbutt"
+            android:clickable="true"
+            android:onClick="addLangButtonListener"/>
 
     </LinearLayout>
 
@@ -65,13 +70,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Profile"
+            android:text="@string/profile"
             android:id="@+id/textView4"/>
 
         <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="log in"
+                android:text="@string/log_in"
                 android:id="@+id/loginbutt"
                 android:clickable="true"
             android:onClick="addButtonListener" />
@@ -79,10 +84,10 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="log out"
+            android:text="@string/log_out"
             android:id="@+id/buttout"
             android:clickable="true"
-            android:onClick="signInButtonClicked" />
+            android:onClick="logOutButtonClicked" />
 
     </LinearLayout>
 
@@ -97,7 +102,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Alarm Volume"
+            android:text="@string/alarm_volume"
             android:id="@+id/textView5" />
 
         <SeekBar
@@ -110,14 +115,35 @@
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_weight="0.06">
+        android:layout_height="53dp"
+        android:layout_weight="0.17"
+        android:weightSum="1">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Brightness"
+            android:text="@string/music_volume"
+            android:id="@+id/textView" />
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBarMusic" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_weight="0.06"
+        android:weightSum="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/brightness"
             android:id="@+id/textView6" />
 
         <SeekBar
@@ -125,6 +151,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/seekBarBrightness"
             android:max="255" />
+
     </LinearLayout>
 
 </LinearLayout>
