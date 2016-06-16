@@ -37,6 +37,7 @@
             android:name=".DummyActivity"
             android:label="@string/title_activity_login" />
         <activity android:name=".LanguageActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
