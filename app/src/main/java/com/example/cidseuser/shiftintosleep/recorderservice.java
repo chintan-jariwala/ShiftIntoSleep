@@ -69,7 +69,8 @@ public class recorderservice extends Service {
                 public void run() {
                    double amp = getAmplitude();
                     if (mActivity != null) {
-
+                        DatabaseOperations db = new DatabaseOperations(recorderservice.this);
+                        db.putUserNoise("userName", amp, System.currentTimeMillis());
                         mActivity.onAmpChange(amp,System.currentTimeMillis());
                     }
                 }

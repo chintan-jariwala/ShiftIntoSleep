@@ -17,8 +17,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     public static final int database_version = 1;
     public String CREATE_QUERY_USER = "CREATE TABLE " + Database.TableInfo.USER_TABLE_NAME+"("+ Database.TableInfo.USER_NAME+" TEXT,"+ Database.TableInfo.USER_PASSWORD+" TEXT );";
-    public String CREATE_QUERY_ACC = "CREATE TABLE " + Database.TableInfo.ACCE_TABLE_NAME+"("+ Database.TableInfo.USER_NAME+" TEXT,"+ Database.TableInfo.X_COLUMN+" REAL," + Database.TableInfo.Y_COLUMN+" REAL," + Database.TableInfo.Z_COLUMN +" REAL," + Database.TableInfo.DATE_TIME + " TEXT );";
-    public String CREATE_QUERY_NOISE = "CREATE TABLE " + Database.TableInfo.NOISE_TABLE_NAME+"("+ Database.TableInfo.USER_NAME+" TEXT,"+ Database.TableInfo.AMPLITUDE+" REAL," + Database.TableInfo.DATE_TIME + " TEXT );";
+    public String CREATE_QUERY_ACC = "CREATE TABLE " + Database.TableInfo.ACCE_TABLE_NAME+"("+ Database.TableInfo.USER_NAME+" TEXT,"+ Database.TableInfo.X_COLUMN+" REAL," + Database.TableInfo.Y_COLUMN+" REAL," + Database.TableInfo.Z_COLUMN +" REAL," + Database.TableInfo.DATE_TIME + " INT );";
+    public String CREATE_QUERY_NOISE = "CREATE TABLE " + Database.TableInfo.NOISE_TABLE_NAME+"("+ Database.TableInfo.USER_NAME+" TEXT,"+ Database.TableInfo.AMPLITUDE+" REAL," + Database.TableInfo.DATE_TIME + " INT );";
 
     public DatabaseOperations (Context context){
         super (context, Database.TableInfo.DATABASE_NAME, null, database_version);
@@ -54,7 +54,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         }
 
-         public void putUserAccelerometer (String name, double x, double y, double z, String date_time) {
+         public void putUserAccelerometer (String name, double x, double y, double z, long date_time) {
             SQLiteDatabase SQ = getWritableDatabase();
             ContentValues cv = new ContentValues();
             cv.put(Database.TableInfo.USER_NAME, name);
@@ -68,7 +68,7 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
     }
 
-    public void putUserNoise (String name, double amplitude, String date_time) {
+    public void putUserNoise (String name, double amplitude, long date_time) {
         SQLiteDatabase SQ = getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(Database.TableInfo.USER_NAME, name);
@@ -81,9 +81,9 @@ public class DatabaseOperations extends SQLiteOpenHelper {
     }
 
 
-    public ArrayList<Double> getAllAccelerometer()
+    public ArrayList<Accelerometer> getAllAccelerometer()
     {
-        ArrayList<Double> array_list = new ArrayList<Double>();
+        ArrayList<Accelerometer> array_list = new ArrayList<Accelerometer>();
 
         //hp = new HashMap();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -92,7 +92,31 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         while(res.isAfterLast() == false){
 
-            array_list.add(res.getDouble(res.getColumnIndex(Database.TableInfo.X_COLUMN)));
+            Accelerometer acc = new Accelerometer();
+            acc.timestamp =  res.getLong(res.getColumnIndex(Database.TableInfo.DATE_TIME));
+            acc.x = res.getDouble(res.getColumnIndex(Database.TableInfo.X_COLUMN));
+            array_list.add(acc);
+            res.moveToNext();
+        }
+        return array_list;
+    }
+
+
+    public ArrayList<Noise> getAllNoise()
+    {
+        ArrayList<Noise> array_list = new ArrayList<Noise>();
+
+        //hp = new HashMap();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res =  db.rawQuery( "select * from " + Database.TableInfo.NOISE_TABLE_NAME, null );
+        res.moveToFirst();
+
+        while(res.isAfterLast() == false){
+
+            Noise noise = new Noise();
+            noise.timestamp =  res.getLong(res.getColumnIndex(Database.TableInfo.DATE_TIME));
+            noise.amp = res.getDouble(res.getColumnIndex(Database.TableInfo.AMPLITUDE));
+            array_list.add(noise);
             res.moveToNext();
         }
         return array_list;

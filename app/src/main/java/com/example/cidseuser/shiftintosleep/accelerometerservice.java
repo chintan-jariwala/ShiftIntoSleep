@@ -78,9 +78,9 @@ import java.util.Date;
         //displayReading.setText("X"+event.values[0]"Y"+event"Z")
         //Log.i("Accelorometer sensor","X"+event.values[0]+"\nY"+event.values[1]+"\nZ"+event.values[2]);
 
-        Date date = new Date();
+
         DatabaseOperations db = new DatabaseOperations(this);
-        db.putUserAccelerometer("userName", event.values[0], event.values[1], event.values[2], date.toString());
+        db.putUserAccelerometer("userName", event.values[0], event.values[1], event.values[2], System.currentTimeMillis());
 
         if (mActivity != null) {
             mActivity.onAccelerometerValueChanged(event.values[0],System.currentTimeMillis());
