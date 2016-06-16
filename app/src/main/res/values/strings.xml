@@ -1,4 +1,25 @@
 <resources>
+
+<string name="app_name">Shift Into Sleep</string>
+    <string-array name="language_array">
+        <item>English</item>
+        <item>Chinese</item>
+        <item>Spanish</item>
+        <item>German</item>
+        <item>French</item>
+        <item>Japanese</item>
+
+    </string-array>
+
+    <string name="sign_in">Sign In</string>
+    <string name="toggle">ToggleButton</string>
+    <string name="language">Language</string>
+    <string name="profile">Profile</string>
+
+
+    <string name="settings">Settings</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="log_in">log in</string>
     <string name="app_name">Shift Into Sleep</string>
 
 

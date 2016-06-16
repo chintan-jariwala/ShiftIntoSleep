@@ -8,34 +8,134 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.cidseuser.shiftintosleep.MainActivity"
-    android:background="@drawable/stars"
-    android:contextClickable="true">
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <Button
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/settings"
+        android:id="@+id/textView"
+        android:layout_weight="0.15" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:layout_weight="0.06">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Vibration"
+            android:id="@+id/textView2"/>
+
+        <ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textOn="on"
+            android:textOff="off"
+            android:id="@+id/vib_toggle_button"
+            android:checked="false"
+            android:longClickable="false"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Music"
-        android:id="@+id/button"
-        android:onClick="buttonClicked"
-        android:textColor="#000080"
-        android:layout_above="@+id/editText"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="40dp" />
+        android:layout_weight="0.15">
 
-    <EditText
-        android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Language"
+            android:id="@+id/textView3"
+            android:layout_marginTop="31dp"/>
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spin_ner" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
-        android:text="Lullabies aren&apos;t just for babies, they are perfect for adults too. Listening to relaxing music before bed is proven to help with disorders by improving sleep quality and quantity. Relaxing before sleeping helps your brain produces organized theta waves which make you feel as if you are lightly dreaming. After ten minutes of this, your brain produces sleep spindles and K complexes which are in stage 2 of NREM, considered sleeping. "
-        android:textColor="#ffffff"
-        android:maxWidth="600dp"
-        android:gravity="center"
-        android:layout_marginBottom="74dp"
-        android:textStyle="bold|italic"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:enabled="false"
-        android:editable="false"
-        android:inputType="none"  />
+        android:layout_weight="0.20">
 
-</RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Profile"
+            android:id="@+id/textView4"/>
+
+        <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="log in"
+                android:id="@+id/button2"
+                android:clickable="true"
+            android:onClick="signInButtonClicked" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="sign up"
+            android:id="@+id/button" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="1"
+        android:layout_weight="0.21">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Volume"
+            android:id="@+id/textView5" />
+
+        <SeekBar
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar"
+            android:layout_weight="0.96" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="63dp"
+        android:layout_weight="0.06">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Brightness"
+            android:id="@+id/textView6" />
+
+        <SeekBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seekBar2"
+            android:layout_weight="0.75" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
