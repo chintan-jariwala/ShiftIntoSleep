@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.cidseuser.shiftintosleep">
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,6 +27,21 @@
             android:name=".AlarmService"
             android:enabled="true" />
         <receiver android:name=".AlarmReceiver" />
+        <activity android:name=".CalenderActivity" />
+        <activity android:name=".Graph" />
+        <service android:name=".accelerometerservice"></service>
+        <activity android:name=".MusicListActivity"></activity>
+        <activity android:name=".Noisedeector"></activity>
+
+        <service android:name=".recorderservice"></service>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login" />
+        <activity
+            android:name=".DummyActivity"
+            android:label="@string/title_activity_login" />
+        <activity android:name=".LanguageActivity"></activity>
+        <activity android:name=".SettingsActivity"></activity>
     </application>
 
 </manifest>
