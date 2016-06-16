@@ -9,13 +9,11 @@ import android.os.IBinder;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
+import android.view.View;
 import android.widget.ScrollView;
 
 import org.achartengine.ChartFactory;
 import org.achartengine.GraphicalView;
-import org.achartengine.chart.BarChart;
 import org.achartengine.chart.PointStyle;
 import org.achartengine.model.XYMultipleSeriesDataset;
 import org.achartengine.model.XYSeries;
@@ -27,8 +25,12 @@ import java.util.ArrayList;
 public class Graph extends AppCompatActivity {
 
     accelerometerservice  mService;
+    recorderservice mNoiseDetector;
     private XYSeries series;
+    private XYSeries ampSeries;
+
     int index = 0;
+    int ampIndex = 0;
     GraphicalView chartView;
     XYMultipleSeriesRenderer mRenderer;
 
@@ -43,15 +45,25 @@ public class Graph extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // Bind to LocalService
-        Intent intent = new Intent(this, accelerometerservice.class);
-        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
     }
 
-    @Override
-    protected void onStop() {
-        super.onStop();
-        unbindService(mConnection);
+    public void start_recording (View view) {
 
+
+        Intent intent = new Intent(this, accelerometerservice.class);
+        bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
+
+        Intent ampIntent = new Intent(this, recorderservice.class);
+        bindService(ampIntent, mAmpConnection, Context.BIND_AUTO_CREATE);
+    }
+
+    public void stop_recording (View view) {
+
+//        stopService(new Intent(this,accelerometerservice.class));
+//        stopService(new Intent(this,recorderservice.class));
+
+        unbindService(mConnection);
+        unbindService(mAmpConnection);
     }
 
 
@@ -59,31 +71,35 @@ public class Graph extends AppCompatActivity {
 
         DatabaseOperations db = new DatabaseOperations(this);
         ArrayList<Double> list  = db.getAllAccelerometer();
-        series = new XYSeries("Noise Levels (amp)");
-        int i = 1;
-//        for (Double xvalue : list) {
-//            Log.i("Acc", "X - " + xvalue);
-//            series.add(i++,xvalue);
-//        }
-
+        series = new XYSeries("Acce Levels (amp)");
+        ampSeries = new XYSeries("Noise Levels (amp)");
 
 
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
         dataset.addSeries(series);
+        dataset.addSeries(ampSeries);
 
         // Now we create the renderer
         XYSeriesRenderer renderer = new XYSeriesRenderer();
         renderer.setLineWidth(2);
         renderer.setColor(Color.RED);
-
-// we add point markers
         renderer.setPointStyle(PointStyle.CIRCLE);
         renderer.setPointStrokeWidth(3);
+
+        XYSeriesRenderer ampRender = new XYSeriesRenderer();
+        ampRender.setLineWidth(2);
+        ampRender.setColor(Color.BLUE);
+        ampRender.setPointStyle(PointStyle.CIRCLE);
+        ampRender.setPointStrokeWidth(3);
+
+// we add point markers
+
          mRenderer = new XYMultipleSeriesRenderer();
         mRenderer.addSeriesRenderer(renderer);
+        mRenderer.addSeriesRenderer(ampRender);
         // We want to avoid black border
         mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00)); // transparent margins
-// Disable Pan on two axis
+
         mRenderer.setPanEnabled(true, false);
         mRenderer.setYAxisMax(10);
         mRenderer.setYAxisMin(-10);
@@ -124,20 +140,41 @@ public class Graph extends AppCompatActivity {
         }
     };
 
-    public void onAccelerometerValueChanged(double x) {
-        Log.i("Accelorometer sensor","X"+x);
-        series.add(index++, x);
+
+    /** Defines callbacks for service binding, passed to bindService() */
+    private ServiceConnection mAmpConnection = new ServiceConnection() {
+
+        @Override
+        public void onServiceConnected(ComponentName className,
+                                       IBinder service) {
+            // We've bound to LocalService, cast the IBinder and get LocalService instance
+            recorderservice.NoiseLocalBinder binder = (recorderservice.NoiseLocalBinder) service;
+            mNoiseDetector = binder.getService();
+            mNoiseDetector.setActivity(Graph.this);
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName arg0) {
+
+        }
+    };
+
+
+    public void onAccelerometerValueChanged(double x, long timestamp) {
+
+        series.add(timestamp, x);
 
 
         double maxX = series.getMaxX();
-        double minX = maxX - 10; // deltaX is your required x-range
-        double maxY = series.getMinY();
-        double minY = series.getMaxY();
-
+        double minX = maxX - 10000; // deltaX is your required x-range
         mRenderer.setRange(new double[] { minX, maxX, -10, 10 });
+        chartView.repaint();
+    }
+
+    public void onAmpChange(double x, long timestamp) {
+        ampSeries.add(timestamp, x/5000);
+        Log.i("AMp sensor","X "+timestamp);
 
         chartView.repaint();
-
-
     }
 }

@@ -3,6 +3,7 @@ package com.example.cidseuser.shiftintosleep;
 import android.app.Service;
 import android.content.Intent;
 import android.media.MediaRecorder;
+import android.os.Binder;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -19,11 +20,24 @@ public class recorderservice extends Service {
 
     private MediaRecorder mRecorder = null;
     private Timer myTimer;
-
+    private  Graph mActivity = null;
+    private final IBinder mBinder = new NoiseLocalBinder();
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        return null;
+        return mBinder;
+    }
+
+
+    /**
+     * Class used for the client Binder.  Because we know this service always
+     * runs in the same process as its clients, we don't need to deal with IPC.
+     */
+    public class NoiseLocalBinder extends Binder {
+        recorderservice getService() {
+            // Return this instance of LocalService so clients can call public methods
+            return recorderservice.this;
+        }
     }
 
     @Override
@@ -54,11 +68,13 @@ public class recorderservice extends Service {
                 @Override
                 public void run() {
                    double amp = getAmplitude();
-//                    Toast.makeText(recorderservice.this,"Amplitude - " + amp, Toast.LENGTH_SHORT).show();
-                    Log.i("TAG", "Amplitude - " + amp);
+                    if (mActivity != null) {
+
+                        mActivity.onAmpChange(amp,System.currentTimeMillis());
+                    }
                 }
 
-            }, 0, 1000);
+            }, 0, 100);
         }
     }
 
@@ -73,6 +89,7 @@ public class recorderservice extends Service {
         super.onDestroy();
 
         if (mRecorder != null) {
+            myTimer.cancel();
             mRecorder.stop();
             mRecorder.release();
             mRecorder = null;
@@ -86,5 +103,9 @@ public class recorderservice extends Service {
         else
             return 0;
 
+    }
+
+    public void setActivity(Graph activity) {
+        mActivity  = activity;
     }
 }

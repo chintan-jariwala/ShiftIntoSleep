@@ -50,7 +50,7 @@ public class MusicListActivity extends AppCompatActivity {
                 } else if (i==1) {
                     fname = "waterfall_sounds";
                 } else if (i==2) {
-                    fname = " rainforest_stream";
+                    fname = "rainforest_stream";
                 }
                     else if (i==3) {
                     fname = "ocean_waves";

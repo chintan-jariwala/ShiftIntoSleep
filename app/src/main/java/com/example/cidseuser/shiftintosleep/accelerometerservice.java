@@ -69,6 +69,8 @@ import java.util.Date;
     public void onDestroy() {
         super.onDestroy();
         Toast.makeText(this, "Service is ended.", Toast.LENGTH_LONG).show();
+        sm.unregisterListener(this);
+        sm = null;
     }
 
     @Override
@@ -81,7 +83,7 @@ import java.util.Date;
         db.putUserAccelerometer("userName", event.values[0], event.values[1], event.values[2], date.toString());
 
         if (mActivity != null) {
-            mActivity.onAccelerometerValueChanged(event.values[0]);
+            mActivity.onAccelerometerValueChanged(event.values[0],System.currentTimeMillis());
         }
     }
 
