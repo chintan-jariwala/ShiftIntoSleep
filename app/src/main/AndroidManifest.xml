@@ -18,6 +18,10 @@
         <activity android:name=".CalenderActivity" />
         <activity android:name=".Graph" />
         <service android:name=".accelerometerservice"></service>
+        <activity android:name=".MusicListActivity"></activity>
+        <activity android:name=".Noisedeector"></activity>
+
+        <service android:name=".recorderservice"></service>
     </application>
 
 </manifest>
