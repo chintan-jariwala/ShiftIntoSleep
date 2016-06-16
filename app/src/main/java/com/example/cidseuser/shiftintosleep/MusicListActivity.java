@@ -50,13 +50,13 @@ public class MusicListActivity extends AppCompatActivity {
                 } else if (i==1) {
                     fname = "waterfall_sounds";
                 } else if (i==2) {
-                    fname = "rainforest_stream";
+                    fname = " rainforest_stream";
                 }
                     else if (i==3) {
                     fname = "ocean_waves";
                 }
                         else if (i==4) {
-                    fname = "piano_music";
+                    fname = " piano_music";
                 }
                             else if (i==5) {
                     fname = "violin";
@@ -104,7 +104,7 @@ public class MusicListActivity extends AppCompatActivity {
     }
     private void populateListView() {
         // Create list of items
-        String[] myItems = {"Lullaby", "waterfall", "rainforest", "oceans", "Piano", "Violin"};
+        String[] myItems = {"1. Lullaby", "2. Waterfall", "3. RainForest", "4. Oceans", "5. Piano", "6. Violin"};
         // Build Adapter
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                 this,               // Context For The Activity
