@@ -9,7 +9,7 @@
     <string name="language">Language</string>
     <string name="change">Change</string>
     <string name="profile">Profile</string>
-    <string name="log_in">Log In</string>
+
     <string name="log_out">Log Out</string>
     <string name="alarm_volume">Alarm Volume</string>
     <string name="music_volume">Music Volume</string>
