@@ -24,7 +24,7 @@ public class MusicFragment extends Fragment {
              @Override
              public void onClick(View v) {
                   if (v.getId() == R.id.btnMusic) {
-                  Intent i = new Intent();
+                  Intent i = new Intent(getActivity(),MusicListActivity.class);
                   startActivity(i);
             }
         }
