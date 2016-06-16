@@ -15,7 +15,10 @@
             </intent-filter>
         </activity>
         <activity android:name=".MusicListActivity" />
-
+        <service
+            android:name=".AlarmService"
+            android:enabled="true" />
+        <receiver android:name=".AlarmReceiver" />
     </application>
 
 </manifest>
