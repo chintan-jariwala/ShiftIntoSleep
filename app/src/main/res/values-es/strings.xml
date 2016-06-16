@@ -1,0 +1,37 @@
+<resources>
+
+    <string name="app_name">Cambie en Sueño</string>
+
+
+    <string name="vibration">Vibración</string>
+    <string name="on">encienda</string>
+    <string name="off">apague</string>
+    <string name="language">Lengua</string>
+    <string name="change">Cambiar</string>
+    <string name="profile">Perfil</string>
+    <string name="log_in">Entrar </string>
+    <string name="alarm_volume">Volumen de Alarma</string>
+    <string name="music_volume">Volumen de Música</string>
+    <string name="brightness">Brillo</string>
+
+    <string name="english">Inglés</string>
+    <string name="spanish">Español</string>
+
+
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Contraseña (opcional)</string>
+    <string name="action_sign_in">Iniciar sesión o registrarse</string>
+    <string name="action_sign_in_short">Iniciar sesión</string>
+    <string name="error_invalid_email">Esta email no es válida</string>
+    <string name="error_invalid_password">Esta contraseña es demasiado corta</string>
+    <string name="error_incorrect_password">Esta contraseña es incorrecta</string>
+    <string name="error_field_required">Este campo es requerido</string>
+    <string name="permission_rationale">"Permisos de contactos son necesarios para proporcionar
+        sugerencias de correo electrónico."
+    </string>
+
+
+
+</resources>
