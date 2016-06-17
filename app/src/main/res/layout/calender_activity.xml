@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:text="Choose Day"
         android:layout_marginTop="30dp"
-        android:id="@+id/button2"
+        android:id="@+id/editButtonSchedule"
         android:onClick="ChooseDay"
         android:layout_below="@+id/textView6"
         android:layout_alignParentStart="true" />
@@ -21,14 +21,14 @@
         android:id="@+id/textView6"
         android:layout_marginTop="36dp"
         android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/button2" />
+        android:layout_alignStart="@+id/editButtonSchedule" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Wake Time"
         android:id="@+id/button"
-        android:layout_alignTop="@+id/button2"
+        android:layout_alignTop="@+id/editButtonSchedule"
         android:layout_centerHorizontal="true"
         android:onClick="showStartTimePickerDialog"/>
 
