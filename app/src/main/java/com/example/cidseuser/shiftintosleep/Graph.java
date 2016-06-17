@@ -49,7 +49,8 @@ public class Graph extends AppCompatActivity {
 
     public void start_recording (View view) {
 
-
+        series.clear();
+        ampSeries.clear();
         Intent intent = new Intent(this, accelerometerservice.class);
         bindService(intent, mConnection, Context.BIND_AUTO_CREATE);
 
@@ -59,18 +60,35 @@ public class Graph extends AppCompatActivity {
 
     public void stop_recording (View view) {
 
-//        stopService(new Intent(this,accelerometerservice.class));
-//        stopService(new Intent(this,recorderservice.class));
-
         unbindService(mConnection);
         unbindService(mAmpConnection);
     }
 
+    public void showHistory (View view) {
+        series.clear();
+        ampSeries.clear();
+
+        DatabaseOperations db = new DatabaseOperations(this);
+        ArrayList<Accelerometer> list  = db.getAllAccelerometer();
+
+        for (Accelerometer acc : list) {
+            series.add(acc.timestamp, acc.x);
+        }
+
+
+        ArrayList<Noise> noiseArrayList  = db.getAllNoise();
+        for (Noise noise : noiseArrayList) {
+            ampSeries.add(noise.timestamp, noise.amp/5000);
+        }
+        double maxX = series.getMaxX();
+        double minX = maxX - 10000; // deltaX is your required x-range
+        mRenderer.setRange(new double[] { minX, maxX, -10, 10 });
+        chartView.repaint();
+    }
 
     private void showGraphView() {
 
-        DatabaseOperations db = new DatabaseOperations(this);
-        ArrayList<Double> list  = db.getAllAccelerometer();
+
         series = new XYSeries("Acce Levels (amp)");
         ampSeries = new XYSeries("Noise Levels (amp)");
 

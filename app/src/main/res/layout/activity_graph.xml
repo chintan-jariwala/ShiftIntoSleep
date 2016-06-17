@@ -47,7 +47,8 @@
         android:text="Show History"
         android:id="@+id/button7"
         android:layout_alignTop="@+id/button6"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="showHistory" />
 
 
 </RelativeLayout>
