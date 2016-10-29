@@ -168,20 +168,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-
-
-
-
-
-
-
-    public void addButtonListener(View view){
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-
-
-    }
-
     public void addLangButtonListener (View view){
         finish();
         Intent intent = new Intent(this, LanguageActivity.class);
