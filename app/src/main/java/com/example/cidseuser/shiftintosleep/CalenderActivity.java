@@ -36,7 +36,8 @@ public class CalenderActivity extends Activity {
         // Set the user interface layout for the front page
         setContentView(R.layout.calender_activity);
         listView = (ListView)findViewById(R.id.listView);
-        listOfSchedule = new ArrayList<UserSchedule>();
+        DatabaseOperations db = new DatabaseOperations(this);
+        listOfSchedule = db.getAllSchedule();
 
 
         adapter = new ScheduleAdapter(this, listOfSchedule);
