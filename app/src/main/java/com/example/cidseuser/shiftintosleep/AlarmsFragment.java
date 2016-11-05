@@ -26,8 +26,12 @@ import android.support.v4.app.Fragment;
  * Created by cidseuser on 6/10/2016.
  */
 public class AlarmsFragment extends Fragment {
-    String time1 = "2016-14-06 22:00:00";
-    String time2 = "2016-15-06 07:30:00";
+    String date1 = "2016-14-06 22:00:00";
+    String date2 = "2016-15-06 07:30:00";
+    int wake_hour = 6;
+    int wake_minute = 30;
+    int arrive_hour = 22;
+    int arrive_minute = 22;
     Button btnSetAlarm;
     TextView tvWhentoWake;
     AlarmManager alarmManager;
@@ -55,50 +59,54 @@ public class AlarmsFragment extends Fragment {
         btnSetAlarm = (Button) view.findViewById(R.id.btnSetAlarm);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm HH:mm:ss");
-        Date d1 = null,d2 = null;
+        Date d1 = null, d2 = null;
 
-        try {
-            d1 = format.parse(time1);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        try {
+        long hour_difference = (wake_hour * 60 + wake_minute) - (arrive_hour * 60 - arrive_minute);
+        long totalSleep = (int)(hour_difference/90) ;
 
-            d2 = format.parse(time2);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        long difference = d2.getTime() - d1.getTime();
-        long totalSleep =  TimeUnit.MILLISECONDS.toMinutes(difference);
 
         Log.e("Total Sleep : ",""+totalSleep);
         Toast.makeText(getActivity(),"Total Sleep : " + totalSleep,Toast.LENGTH_LONG).show();
 
+        final int timetosleep_hour = (int) ((wake_hour * 60 + wake_minute) - (totalSleep * 90) / 60) ;
+        final int timetosleep_minute = (int) ((wake_hour * 60 + wake_minute) - (totalSleep * 90) % 60);
+        tvWhentoWake.setText("You should sleep at "+timetosleep_hour + ":" + timetosleep_minute);
 
-        final int timetowake = (int) (totalSleep/90);
-        tvWhentoWake.setText("You Should wake at "+timetowake);
+        final int timetowake_hour = wake_hour;
+        final int timetowake_minute = wake_minute;
+        tvWhentoWake.setText("You should wake at "+timetowake_hour + ":" + timetowake_minute);
+
+        //fix this!!!!!!!!!!!!
 
         btnSetAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setAlarm(timetowake);
+                setAlarm(timetowake_hour, timetowake_minute);
+            }
+        });
+        btnSetAlarm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setAlarm(timetosleep_hour, timetosleep_minute);
             }
         });
         return view;
     }
 
-    public void setAlarm(int timetowake){
+    public void setAlarm(int timetowake, int timetowake_minute){
+
+
 
         calendar.setTimeInMillis(System.currentTimeMillis());
         calendar.set(Calendar.HOUR_OF_DAY,timetowake);
-        calendar.set(Calendar.MINUTE,0);
+        calendar.set(Calendar.MINUTE,timetowake_minute);
         Intent myIntent = new Intent(getActivity(), AlarmReceiver.class);
 
         pendingIntent = PendingIntent.getBroadcast(getActivity(),0,myIntent,0);
         alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
 
 
-        Toast.makeText(getActivity(),"The alarm will wake you at :"+timetowake,Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(),"The alarm will wake you at :"+timetowake + ":" + timetowake_minute,Toast.LENGTH_LONG).show();
 
 
 

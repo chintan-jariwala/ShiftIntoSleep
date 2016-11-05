@@ -25,6 +25,11 @@ public class Database {
         public static final String NOISE_TABLE_NAME = "noise_table";
         public static final String AMPLITUDE = "amp";
 
+        public static final String SCHEDULE_TABLE_NAME = "schedule_table";
+        public static final String SCH_DATE = "sch_date";
+        public static final String SCH_WAKE_TIME = "wake_time";
+        public static final String SCH_ARRIVE_TIME = "arrive_time";
+
         public static final String DATABASE_NAME = "shiftintosleep_DB";
 
     }

@@ -123,6 +123,12 @@ public class CalenderActivity extends Activity {
                     userSchedule.getEndMinute() == -1) {
                 Toast.makeText(this,"Please enter all values.", Toast.LENGTH_SHORT).show();
             } else {
+                DatabaseOperations db = new DatabaseOperations(this);
+
+                String date = userSchedule.getMonthOfYear() +"/" + userSchedule.getDay()+"/"+ userSchedule.getYear();
+                String wakeTime =  userSchedule.getStartHour() +":" +  userSchedule.getStartMinute();
+                String arriveTime =  userSchedule.getEndHour() +":" +  userSchedule.getEndMinute();
+                db.putUserSchedule("",date,wakeTime,arriveTime );
                 listOfSchedule.add(userSchedule);
                 listView.invalidateViews();
                 userSchedule = null;
