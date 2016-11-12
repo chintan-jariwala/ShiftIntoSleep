@@ -125,8 +125,8 @@ public class DatabaseOperations extends SQLiteOpenHelper {
             schedule.setStartMinute(Integer.parseInt(waketime_parts[1]));
             String arrive_time =  res.getString(res.getColumnIndex(Database.TableInfo.SCH_ARRIVE_TIME));
             String[] arrivetime_parts = arrive_time.split(":");
-            schedule.setStartHour(Integer.parseInt(arrivetime_parts[0]));
-            schedule.setStartMinute(Integer.parseInt(arrivetime_parts[1]));
+            schedule.setEndHour(Integer.parseInt(arrivetime_parts[0]));
+            schedule.setEndMinute(Integer.parseInt(arrivetime_parts[1]));
 
             array_list.add(schedule);
             res.moveToNext();
@@ -169,6 +169,24 @@ public class DatabaseOperations extends SQLiteOpenHelper {
 
         long k = SQ.insert(Database.TableInfo.SCHEDULE_TABLE_NAME, null, cv);
 
+    }
+
+    public void deleteSchedule(UserSchedule sch) {
+        SQLiteDatabase SQ = getWritableDatabase();
+        String startTime = sch.getStartHour()+":" +sch.getStartMinute();
+        String endTime = sch.getEndHour()+":" +sch.getEndMinute();
+        String schDate = sch.getMonthOfYear() +"/" + sch.getDay()+"/"+ sch.getYear();
+//        String query = "DELETE from " + Database.TableInfo.SCHEDULE_TABLE_NAME + " WHERE " + Database.TableInfo.SCH_DATE + "=\"" + schDate+"\";";
+////                + "\" AND " + Database.TableInfo.SCH_WAKE_TIME + "= \"" + startTime
+////                + "\" AND " + Database.TableInfo.SCH_ARRIVE_TIME + "= \"" + endTime + "\";";
+//        System.out.println(" Date = " + query);
+//        Cursor res = SQ.rawQuery(query, null);
+//
+
+        String table = Database.TableInfo.SCHEDULE_TABLE_NAME;
+        String whereClause =  Database.TableInfo.SCH_DATE + "=? AND " + Database.TableInfo.SCH_WAKE_TIME + "=? AND " + Database.TableInfo.SCH_ARRIVE_TIME + "=?" ;
+        String[] whereArgs = new String[] { schDate,startTime, endTime};
+        SQ.delete(table, whereClause, whereArgs);
     }
 
 }

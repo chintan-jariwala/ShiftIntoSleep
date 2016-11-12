@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -171,6 +172,23 @@ public class CalenderActivity extends Activity {
             }
             // Lookup view for data population
             TextView tvName = (TextView) convertView.findViewById(R.id.tvName);
+            Button btn = (Button)convertView.findViewById(R.id.delete_btn);
+            btn.setTag(position);
+
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int tag = (int) v.getTag();
+                    UserSchedule schedule = getItem(tag);
+
+                    DatabaseOperations db = new DatabaseOperations(CalenderActivity.this);
+                    db.deleteSchedule(schedule);
+
+                    listOfSchedule.remove(schedule);
+                    notifyDataSetChanged();
+                    System.out.println("Btn clicked" + v.getTag());
+                }
+            });
             tvName.setText(schedule.getMonthOfYear() + "/" + schedule.getDay() + "/" + schedule.getYear() + " Start Time:" + schedule.getStartHour() + ":" + schedule.getStartMinute() + " End Time:" + schedule.getEndHour() + ":" + schedule.getEndMinute());
             return convertView;
         }

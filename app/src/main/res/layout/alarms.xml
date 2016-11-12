@@ -24,7 +24,7 @@
             android:id="@+id/btnSetAlarm"
             android:text="Set Alarm"
             android:gravity="bottom"
-            android:layout_below="@+id/tvWhenToWake"/>
+            android:layout_below="@+id/tvWhenToWake" />
     </RelativeLayout>
 
 </ScrollView>
