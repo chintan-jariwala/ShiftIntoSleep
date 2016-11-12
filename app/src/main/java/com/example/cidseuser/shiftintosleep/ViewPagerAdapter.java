@@ -22,18 +22,19 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
             return new AlarmsFragment();
         } else if (position == 3) {
             return new StatsFragment();
-        } else if (position == 4) {
-            return new MusicFragment();
         } else if (position == 5) {
+            return new MusicFragment();
+        } else if (position == 6) {
             return new TipsFragment();
-        }
+        }  else if (position == 4) {
+            return new DataFragment();
         return new TabFragment();
 
     }
 
     @Override
     public int getCount(){
-        return 6;
+        return 7;
     }
 
 }

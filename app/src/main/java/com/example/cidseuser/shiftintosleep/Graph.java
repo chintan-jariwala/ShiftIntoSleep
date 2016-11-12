@@ -79,7 +79,29 @@ public class Graph extends AppCompatActivity {
         ArrayList<Noise> noiseArrayList  = db.getAllNoise();
         for (Noise noise : noiseArrayList) {
             ampSeries.add(noise.timestamp, noise.amp/5000);
+        } double sum =0;
+                for (Noise noise : noiseArrayList) {
+                    sum = sum + noise.amp/5000;
+                }
+        double avg = sum/noiseArrayList.size();
+
+        int size = noiseArrayList.size(); System.out.println("size of array list after creating: " + size);
+        System.out.println("length: " + size);
+        int THRESHOLD = 120;
+
+        for (Noise noise : noiseArrayList) {
+            double diff = noise.amp/5000 - avg;
+            if (diff > THRESHOLD) {
+
+            }
         }
+
+
+
+
+
+
+
         double maxX = series.getMaxX();
         double minX = maxX - 10000; // deltaX is your required x-range
         mRenderer.setRange(new double[] { minX, maxX, -10, 10 });

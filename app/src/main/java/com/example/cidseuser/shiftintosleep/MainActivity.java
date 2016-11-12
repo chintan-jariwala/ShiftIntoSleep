@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         final TabLayout.Tab stats = tabLayout.newTab();
         final TabLayout.Tab music = tabLayout.newTab();
         final TabLayout.Tab tips = tabLayout.newTab();
+        final TabLayout.Tab data = tabLayout.newTab();
 
         /*
         Setting Title text for our tabs respectively
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         stats.setText("Stats");
         music.setText("Music");
         tips.setText("Tips");
+        data.setText("Data");
 
         /*
         Adding the tab view to our tab layout at appropriate positions
@@ -74,9 +76,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(home, 0);
         tabLayout.addTab(settings, 1);
         tabLayout.addTab(alarms, 2);
-        tabLayout.addTab(stats, 3);
-        tabLayout.addTab(music, 4);
-        tabLayout.addTab(tips, 5);
+        tabLayout.addTab(stats, 3); 
+        tabLayout.addTab(data, 4);
+        tabLayout.addTab(music, 5);
+        tabLayout.addTab(tips, 6);
 
         /*
         TabTextColor sets the color for the title of the tabs, passing a ColorStateList here makes
