@@ -27,10 +27,11 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
         } else if (position == 5) {
             return new TipsFragment();
         }
-        return new TabFragment();
 
+
+
+        return null;
     }
-
     @Override
     public int getCount(){
         return 6;

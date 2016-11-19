@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editText"
-        android:text="Lullabies aren't just for babies, they're perfect for adults too. Listening to relaxing music before bed is proven to help with disorders by improving sleep quality and quantity. Relaxing before sleeping helps your brain produces organized theta waves which make you feel as if you are lightly dreaming. After ten minutes of this, your brain produces sleep spindles, considered sleeping. "
+        android:text="Lullabies aren&apos;t just for babies, they&apos;re perfect for adults too. Listening to relaxing music before bed is proven to help with disorders by improving sleep quality and quantity. Relaxing before sleeping helps your brain produces organized alpha waves which make you feel as if you are lightly dreaming. After ten minutes of this, your brain produces sleep spindles, considered sleeping. "
         android:textColor="#ffffff"
         android:maxWidth="600dp"
         android:gravity="center"
