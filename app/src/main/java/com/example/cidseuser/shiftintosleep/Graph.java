@@ -29,6 +29,9 @@ public class Graph extends AppCompatActivity {
     private XYSeries series;
     private XYSeries ampSeries;
 
+
+    private XYSeries thresholdSeries;
+int thresholdVal = 0;
     int index = 0;
     int ampIndex = 0;
     GraphicalView chartView;
@@ -113,11 +116,12 @@ public class Graph extends AppCompatActivity {
 
         series = new XYSeries("Acce Levels (amp)");
         ampSeries = new XYSeries("Noise Levels (amp)");
-
+        thresholdSeries = new XYSeries("Threshold");
 
         XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
         dataset.addSeries(series);
         dataset.addSeries(ampSeries);
+        dataset.addSeries(thresholdSeries);
 
         // Now we create the renderer
         XYSeriesRenderer renderer = new XYSeriesRenderer();
@@ -132,13 +136,24 @@ public class Graph extends AppCompatActivity {
         ampRender.setPointStyle(PointStyle.CIRCLE);
         ampRender.setPointStrokeWidth(3);
 
+
+
+        XYSeriesRenderer thresholdRenderer = new XYSeriesRenderer();
+        thresholdRenderer.setLineWidth(2);
+        thresholdRenderer.setColor(Color.BLACK);
+        thresholdRenderer.setPointStyle(PointStyle.CIRCLE);
+        thresholdRenderer.setPointStrokeWidth(3);
+
+
+
 // we add point markers
 
          mRenderer = new XYMultipleSeriesRenderer();
         mRenderer.addSeriesRenderer(renderer);
         mRenderer.addSeriesRenderer(ampRender);
+        mRenderer.addSeriesRenderer(thresholdRenderer);
         // We want to avoid black border
-        mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00)); // transparent margins
+        //mRenderer.setMarginsColor(Color.argb(0x00, 0xff, 0x00, 0x00)); // transparent margins
 
         mRenderer.setPanEnabled(true, false);
         mRenderer.setYAxisMax(10);
@@ -158,6 +173,9 @@ public class Graph extends AppCompatActivity {
         chartView = ChartFactory.getLineChartView(this, dataset, mRenderer);
         ScrollView linearLayout = (ScrollView)findViewById(R.id.chart);
         linearLayout.addView(chartView,0);
+        mRenderer.setYLabels(10);
+
+
 
 
     }
@@ -213,8 +231,8 @@ public class Graph extends AppCompatActivity {
 
     public void onAmpChange(double x, long timestamp) {
         ampSeries.add(timestamp, x/5000);
-        Log.i("AMp sensor","X "+timestamp);
-
+        Log.i("AMp sensor","X "+x/5000);
+        thresholdSeries.add(timestamp,1);
         chartView.repaint();
     }
 }
