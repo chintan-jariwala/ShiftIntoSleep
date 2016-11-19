@@ -2,8 +2,8 @@
 
     <string name="app_name">Cambie en Sueño</string>
     <string name="helping_you_sleep_since_2016">Ayudándole a dormir desde 2016</string>
-    <string name="stop_recording"></string>
-    <string name="show_history"></string>
+    <string name="stop_recording">Para de Grabar</string>
+    <string name="show_history">Mostrar Historial</string>
     <string name="vibration">Vibración</string>
     <string name="on">encienda</string>
     <string name="off">apague</string>
@@ -11,13 +11,13 @@
     <string name="change">Cambiar</string>
     <string name="alarm_volume">Volumen de Alarma</string>
     <string name="music_volume">Volumen de Música</string>
-    <string name="sleepwalking"></string>
+    <string name="sleepwalking">Somnambulismo</string>
     <string name="english">Inglés</string>
     <string name="spanish">Español</string>
-    <string name="sleep_apnea"></string>
-
+    <string name="sleep_apnea">Apnea del Sueño</string>
+    <string name="night_terrors">Terrores Nocturnos</string>
     <string name="start_recording">Empezar a Grabar</string>
-
+    <string name="narcolepsy">Narcolepsia</string>
     <string name="you_should_wake_at">Deberías despertarte</string>
     <string name="set_alarm">Ajustar Alarma</string>
     <string name="age">Años</string>
@@ -45,6 +45,12 @@
     <string name="brightness">Brillo</string>
     <string name="action_sign_in_short">Ingresa</string>
     <string name="action_sign_in">Ingresa o Registro</string>
-
+    <string name="restless_legs_syndrome">Síndrome de Piernas Inquietas</string>
+    <string name="jet_lag">Descompensación Horaria</string>
+    <string name="music_click_to_play">Música - haz clic para reproducir</string>
+    <string name="music">Música</string>
+    <string name="lullabies_arent">Las canciones de cuna no son sólo para los bebés, sino que son perfectos para los adultos también. Escuchar música relajante antes de acostarse se ha demostrado que ayuda con los trastornos mejorando la calidad y cantidad del sueño. Relajarse antes de dormir ayuda a que su cerebro produzca ondas teta organizadas que le hacen sentir como si estuviera soñando ligeramente. Después de diez minutos de esto, su cerebro produce husillos de sueño, considerado dormir.</string>
+    <string name="delete">Borrar</string>
+    <string name="details">Detalles</string>
 
 </resources>

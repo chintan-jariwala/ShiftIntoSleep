@@ -66,7 +66,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/restless_legs_syndrome "
+        android:text="@string/restless_legs_syndrome"
         android:textColor="#433558"
         android:id="@+id/btnRestlessLegsSyndrome"
         android:layout_marginTop="29dp"

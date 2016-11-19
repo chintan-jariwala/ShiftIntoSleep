@@ -59,6 +59,13 @@
     <string name="sleep_apnea">Sleep Apnea</string>
     <string name="sleepwalking">Sleepwalking</string>
     <string name="stop_recording">Stop Recording</string>
+    <string name="jet_lag">Jet Lag</string>
+    <string name="narcolepsy">Narcolepsy</string>
+    <string name="night_terrors">Night Terrors</string>
+    <string name="restless_legs_syndrome">Restless Legs Syndrome</string>
+    <string name="lullabies_arent">Lullabies aren\'t just for babies, they\'re perfect for adults too. Listening to relaxing music before bed is proven to help with disorders by improving sleep quality and quantity. Relaxing before sleeping helps your brain produces organized theta waves which make you feel as if you are lightly dreaming. After ten minutes of this, your brain produces sleep spindles, considered sleeping.</string>
+    <string name="music">Music</string>
+    <string name="music_click_to_play">Music - click to play</string>
 
 
 </resources>
