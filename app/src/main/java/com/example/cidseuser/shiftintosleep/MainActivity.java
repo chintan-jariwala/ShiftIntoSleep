@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
         final TabLayout.Tab music = tabLayout.newTab();
         final TabLayout.Tab tips = tabLayout.newTab();
 
+
         /*
         Setting Title text for our tabs respectively
          */
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         music.setText("Music");
         tips.setText("Tips");
 
+
         /*
         Adding the tab view to our tab layout at appropriate positions
         As I want home at first position I am passing home and 0 as argument to
@@ -74,9 +76,10 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.addTab(home, 0);
         tabLayout.addTab(settings, 1);
         tabLayout.addTab(alarms, 2);
-        tabLayout.addTab(stats, 3);
+        tabLayout.addTab(stats, 3); 
         tabLayout.addTab(music, 4);
         tabLayout.addTab(tips, 5);
+
 
         /*
         TabTextColor sets the color for the title of the tabs, passing a ColorStateList here makes
