@@ -64,29 +64,43 @@ public class AlarmsFragment extends Fragment {
         int currentYear =  calendar.get(Calendar.YEAR);
         for (UserSchedule  sch: listOfSchedule)
         {
-            if (sch.getDay() == currentDay - 1 &&
-                    sch.getMonthOfYear() == currentMonth &&
-                    sch.getYear() == currentYear  ) {
-                arrive_hour = sch.getStartHour();
-                arrive_minute = sch.getStartMinute();
-
-                System.out.println("Found previous date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " +  calendar.get(Calendar.YEAR));
-            }
-            else
+            System.out.println(arrive_hour);
+            if (arrive_hour > 12)
             {
-                System.out.println("Not previous date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " +  calendar.get(Calendar.YEAR) );
-            }
-            if (sch.getDay() == currentDay &&
-                    sch.getMonthOfYear() == currentMonth &&
-                    sch.getYear() == currentYear  ) {
-                wake_hour = sch.getStartHour();
-                wake_minute = sch.getStartMinute();
+                if (sch.getDay() == currentDay - 1 &&
+                        sch.getMonthOfYear() == currentMonth &&
+                        sch.getYear() == currentYear  ) {
+                    arrive_hour = sch.getEndHour();
+                    arrive_minute = sch.getEndMinute();
 
-                System.out.println("Found current date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " +  calendar.get(Calendar.YEAR));
+                    System.out.println("Found previous date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " +  calendar.get(Calendar.YEAR));
+                }
+                else
+                {
+                    System.out.println("Not previous date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " +  calendar.get(Calendar.YEAR) );
+                }
             }
-            else
-            {
-                System.out.println("Not current date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " +  calendar.get(Calendar.YEAR) );
+            else {
+                if (sch.getDay() == currentDay &&
+                        sch.getMonthOfYear() == currentMonth &&
+                        sch.getYear() == currentYear) {
+                    arrive_hour = sch.getEndHour();
+                    arrive_minute = sch.getEndMinute();
+
+                    System.out.println("Found previous date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " + calendar.get(Calendar.YEAR));
+                } else {
+                    System.out.println("Not previous date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " + calendar.get(Calendar.YEAR));
+                }
+                if (sch.getDay() == currentDay &&
+                        sch.getMonthOfYear() == currentMonth &&
+                        sch.getYear() == currentYear) {
+                    wake_hour = sch.getStartHour();
+                    wake_minute = sch.getStartMinute();
+
+                    System.out.println("Found current date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " + calendar.get(Calendar.YEAR));
+                } else {
+                    System.out.println("Not current date " + calendar.get(Calendar.DAY_OF_MONTH) + " " + calendar.get(Calendar.MONTH) + " " + calendar.get(Calendar.YEAR));
+                }
             }
 
         }
@@ -101,47 +115,59 @@ public class AlarmsFragment extends Fragment {
         btnSetAlarm = (Button) view.findViewById(R.id.btnSetAlarm);
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-dd-mm HH:mm:ss");
-        Date d1 = null, d2 = null;
+        System.out.println("WAKE:"+wake_hour + " " + wake_minute);
+        System.out.println("ARRIVE:" + arrive_hour + " " + arrive_minute);
 
-        long hour_difference = (wake_hour * 60 + wake_minute) + (24*60 - (arrive_hour * 60 + arrive_minute));
+        long hour_difference = 0;
+        if (arrive_hour > 12)
+            hour_difference = (wake_hour * 60 + wake_minute) + (24*60 - (arrive_hour * 60 + arrive_minute));
+        else
+            hour_difference = (wake_hour * 60 + wake_minute) - (arrive_hour * 60 + arrive_minute);
+        System.out.println(hour_difference);
         int totalSleep = (int)(hour_difference/90) ;
+        if (totalSleep > 6)
+            totalSleep = 5;
+        if (totalSleep < 4)
+            totalSleep = 4;
 
 
-        Log.e("Total Sleep : ",""+totalSleep);
-        Toast.makeText(getActivity(),"Total Sleep : " + totalSleep,Toast.LENGTH_LONG).show();
-
-        double timetosleep_hour = (wake_hour * 60 + wake_minute) - (totalSleep * 90) / 60.0;
+        double timetosleep_hour = ((wake_hour * 60 + wake_minute) - (totalSleep * 90) )/ 60.0;
             if (timetosleep_hour < 0)
             {
-                timetosleep_hour = Math.abs(timetosleep_hour);
+                timetosleep_hour = 24 - Math.abs(timetosleep_hour);
             }
-        final double finaltimetosleep_hour = timetosleep_hour;
-        int timetosleep_minute = ((wake_hour * 60 + wake_minute) - (totalSleep * 90) % 60);
+        final int finaltimetosleep_hour = (int)(timetosleep_hour);
+        int timetosleep_minute = ((wake_hour * 60 + wake_minute) - (totalSleep * 90)) % 60;
             if (timetosleep_minute < 0)
             {
-                timetosleep_minute = Math.abs(timetosleep_minute);
+                timetosleep_minute = 60 - Math.abs(timetosleep_minute);
             }
-        final double finaltimetosleep_minute = timetosleep_minute;
-        tvWhentoWake.setText("You should sleep at "+timetosleep_hour + ":" + timetosleep_minute);
+        final int finaltimetosleep_minute = timetosleep_minute;
+        String smin = finaltimetosleep_minute + "";
+        if (timetosleep_minute == 0)
+            smin = "00";
+        final String finalsmin = smin;
 
         final int timetowake_hour = wake_hour;
         final int timetowake_minute = wake_minute;
-        tvWhentoWake.setText("You should wake at "+timetowake_hour + ":" + timetowake_minute);
+        String wmin = timetowake_minute + "";
+        if (timetowake_minute == 0)
+            wmin = "00";
+        final String finalwmin = wmin;
+        tvWhentoWake.setText("You should sleep at "+finaltimetosleep_hour + ":" + finalsmin + " You should wake at "+timetowake_hour + ":" + finalwmin);
 
-        //fix this!!!!!!!!!!!!
+        System.out.println(finaltimetosleep_hour + "      " + finaltimetosleep_minute);
 
         btnSetAlarm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setAlarm(timetowake_hour, timetowake_minute);
-            }
-        });
-        btnSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
                 setAlarm((int) finaltimetosleep_hour, (int) finaltimetosleep_minute);
+            Toast.makeText(getActivity(),"The alarm will wake you at "+timetowake_hour + ":" + finalwmin,Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(),"The alarm will remind you to sleep at "+finaltimetosleep_hour + ":" + finalsmin,Toast.LENGTH_LONG).show();
             }
         });
+
 
 
 
@@ -163,8 +189,6 @@ public class AlarmsFragment extends Fragment {
         pendingIntent = PendingIntent.getBroadcast(getActivity(),0,myIntent,0);
         alarmManager.set(AlarmManager.RTC, calendar.getTimeInMillis(), pendingIntent);
 
-
-        Toast.makeText(getActivity(),"The alarm will wake you at :"+timetowake + ":" + timetowake_minute,Toast.LENGTH_LONG).show();
 
 
 
