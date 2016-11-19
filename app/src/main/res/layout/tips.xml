@@ -13,7 +13,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sleepwalking"
+        android:text="@string/sleepwalking"
         android:textColor="#433558"
         android:id="@+id/btnSleepwalking"
         android:layout_alignParentTop="true"
@@ -23,7 +23,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sleep Apnea"
+        android:text="@string/sleep_apnea"
         android:textColor="#433558"
         android:id="@+id/btnSleepApnea"
         android:layout_below="@+id/btnSleepwalking"
@@ -33,7 +33,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Insomnia"
+        android:text="@string/insomnia"
         android:textColor="#433558"
         android:id="@+id/btnInsomnia"
         android:layout_below="@+id/btnSleepApnea"
@@ -44,7 +44,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Night Terrors"
+        android:text="@string/night_terrors"
         android:textColor="#433558"
         android:id="@+id/btnNightTerrors"
         android:layout_below="@+id/btnJetLag"
@@ -55,7 +55,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Narcolepsy"
+        android:text="@string/narcolepsy"
         android:textColor="#433558"
         android:id="@+id/btnNarcolepsy"
         android:layout_marginTop="33dp"
@@ -66,7 +66,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Restless Legs Syndrome "
+        android:text="@string/restless_legs_syndrome "
         android:textColor="#433558"
         android:id="@+id/btnRestlessLegsSyndrome"
         android:layout_marginTop="29dp"
@@ -77,7 +77,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Jet Lag"
+        android:text="@string/jet_lag"
         android:textColor="#433558"
         android:id="@+id/btnJetLag"
         android:layout_below="@+id/btnInsomnia"

@@ -38,7 +38,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.i("SETTINGS","On create viwe");
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (Settings.System.canWrite(this)) {
@@ -64,38 +64,38 @@ public class SettingsActivity extends AppCompatActivity {
 
 
 
-        brightnessSeekbar = (SeekBar)findViewById(R.id.seekBarBrightness);
-        brightnessSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                Log.i("Testing", "Value - " + i);
-
-                cResolver =   SettingsActivity.this.getApplicationContext().getContentResolver(); //getContentResolver();
-                window = getWindow();
-
-
-
-                Settings.System.putInt(cResolver,
-                        Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
-                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
-                WindowManager.LayoutParams layoutpars = window.getAttributes();
-                layoutpars.screenBrightness = i / (float)255;
-                window.setAttributes(layoutpars);
-
-
-            }
-
-            @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
-            }
-
-            @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                Intent intent = new Intent(SettingsActivity.this, DummyActivity.class);
-                SettingsActivity.this.startActivity(intent);
-            }
-        });
+//        brightnessSeekbar = (SeekBar)findViewById(R.id.seekBarBrightness);
+//        brightnessSeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+//            @Override
+//            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+//                Log.i("Testing", "Value - " + i);
+//
+//                cResolver =   SettingsActivity.this.getApplicationContext().getContentResolver(); //getContentResolver();
+//                window = getWindow();
+//
+//
+//
+//                Settings.System.putInt(cResolver,
+//                        Settings.System.SCREEN_BRIGHTNESS_MODE, Settings.System.SCREEN_BRIGHTNESS_MODE_MANUAL);
+//                Settings.System.putInt(cResolver, Settings.System.SCREEN_BRIGHTNESS, brightness);
+//                WindowManager.LayoutParams layoutpars = window.getAttributes();
+//                layoutpars.screenBrightness = i / (float)255;
+//                window.setAttributes(layoutpars);
+//
+//
+//            }
+//
+//            @Override
+//            public void onStartTrackingTouch(SeekBar seekBar) {
+//
+//            }
+//
+//            @Override
+//            public void onStopTrackingTouch(SeekBar seekBar) {
+//                Intent intent = new Intent(SettingsActivity.this, DummyActivity.class);
+//                SettingsActivity.this.startActivity(intent);
+//            }
+//        });
 
         this.setVolumeControlStream(AudioManager.STREAM_ALARM);
         this.setVolumeControlStream(AudioManager.STREAM_MUSIC);
@@ -168,10 +168,11 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
+
+
     public void addLangButtonListener (View view){
         finish();
-        Intent intent = new Intent(this, LanguageActivity.class);
-        startActivity(intent);
+
     }
 
 

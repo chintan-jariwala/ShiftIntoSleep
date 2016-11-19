@@ -43,11 +43,11 @@ public class LanguageActivity extends AppCompatActivity {
                     }
                     Resources res = getResources();
                  // Change locale settings in the app.
-                     DisplayMetrics dm = res.getDisplayMetrics();
+                    DisplayMetrics dm = res.getDisplayMetrics();
                     android.content.res.Configuration conf = res.getConfiguration();
                     conf.locale = new Locale(langCOde);
                     res.updateConfiguration(conf, dm);
-
+                    Log.i("LANG", "Language changed");
                     finish();
 
                     Intent intent = new Intent(LanguageActivity.this, MainActivity.class);
@@ -63,7 +63,6 @@ public class LanguageActivity extends AppCompatActivity {
 
 
 
-
 //        spinspin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 //            @Override
 //            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -72,8 +71,8 @@ public class LanguageActivity extends AppCompatActivity {
 //                    Log.i("Spinner", "English");
 //                    languageToLoad = "en";
 //                } else if (i==1) {
-//                    Log.i("Spinner", "Chinese");
-//                    languageToLoad = "zh";
+//                    Log.i("Spinner", "French");
+//                    languageToLoad = "fr";
 //                } else if (i == 2){
 //                    Log.i("Spinner", "Spanish");
 //                    languageToLoad =  "es";

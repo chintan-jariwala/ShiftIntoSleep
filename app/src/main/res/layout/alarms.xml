@@ -15,14 +15,14 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:id="@+id/tvWhenToWake"
-            android:text="Test"
+            android:text="@string/test"
             android:textSize="50dp"
             android:textColor="@color/bright_foreground_inverse_material_light"/>
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:id="@+id/btnSetAlarm"
-            android:text="Set Alarm"
+            android:text="@string/set_alarm"
             android:gravity="bottom"
             android:layout_below="@+id/tvWhenToWake"/>
     </RelativeLayout>

@@ -17,39 +17,13 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/radioGroup">
 
-        <!--<LinearLayout-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="wrap_content">-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="66dp"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text="English"-->
-                <!--android:id="@+id/textView" />-->
-
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/radioButton"
                 android:text="@string/english"
                 android:checked="false" />
-        <!--</LinearLayout>-->
 
-        <!--<LinearLayout-->
-            <!--android:orientation="horizontal"-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="73dp">-->
-
-            <!--<TextView-->
-                <!--android:layout_width="wrap_content"-->
-                <!--android:layout_height="64dp"-->
-                <!--android:textAppearance="?android:attr/textAppearanceMedium"-->
-                <!--android:text="Spanish"-->
-                <!--android:id="@+id/textView7"-->
-                <!--android:layout_below="@+id/textView"-->
-                <!--android:layout_alignParentStart="true" />-->
 
             <RadioButton
                 android:layout_width="wrap_content"
@@ -57,7 +31,7 @@
                 android:id="@+id/radioButton2"
                 android:text="@string/spanish"
                 android:checked="false" />
-        <!--</LinearLayout>-->
+
 
     </RadioGroup>
 

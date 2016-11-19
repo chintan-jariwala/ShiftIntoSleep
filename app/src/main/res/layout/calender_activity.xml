@@ -6,7 +6,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Choose Day"
+        android:text="@string/choose_day"
         android:layout_marginTop="30dp"
         android:id="@+id/editButtonSchedule"
         android:onClick="ChooseDay"
@@ -17,7 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Change Schedule"
+        android:text="@string/change_schedule"
         android:id="@+id/textView6"
         android:layout_marginTop="36dp"
         android:layout_alignParentTop="true"
@@ -26,7 +26,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Wake Time"
+        android:text="@strign/wake_time"
         android:id="@+id/button"
         android:layout_alignTop="@+id/editButtonSchedule"
         android:layout_centerHorizontal="true"
@@ -35,7 +35,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add"
+        android:text="@string/add"
         android:id="@+id/button3"
         android:layout_below="@+id/button"
         android:layout_centerHorizontal="true"
@@ -45,7 +45,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Arrive Home"
+        android:text="@string/arrive_home"
         android:id="@+id/button4"
         android:layout_alignTop="@+id/button"
         android:layout_alignParentEnd="true"

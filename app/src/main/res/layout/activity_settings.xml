@@ -56,8 +56,7 @@
             android:layout_height="wrap_content"
             android:text="@string/change"
             android:id="@+id/Langbutt"
-            android:clickable="true"
-            android:onClick="addLangButtonListener"/>
+            android:clickable="true" />
 
     </LinearLayout>
 
@@ -66,29 +65,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0.12">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/profile"
-            android:id="@+id/textView4"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/log_in"
-            android:id="@+id/loginbutt"
-            android:clickable="true"
-            android:onClick="addButtonListener" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/log_out"
-            android:id="@+id/buttout"
-            android:clickable="true"
-            android:onClick="logOutButtonClicked" />
 
     </LinearLayout>
 
@@ -131,28 +107,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/seekBarMusic" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="63dp"
-        android:layout_weight="0.06"
-        android:weightSum="1">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/brightness"
-            android:id="@+id/textView6" />
-
-        <SeekBar
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/seekBarBrightness"
-            android:max="255" />
-
     </LinearLayout>
 
 </LinearLayout>

@@ -50,6 +50,15 @@
     <string name="night_shift">Night Shift</string>
     <string name="insomnia">Insomnia</string>
     <string name="apnea">Apnea</string>
+    <string name="start_recording">Start Recording</string>
+    <string name="set_alarm">Set Alarm</string>
+    <string name="helping_you_sleep_since_2016">Helping you sleep since 2016</string>
+    <string name="you_should_wake_at">You should wake at</string>
+    <string name=""></string>
+    <string name="show_history">Show History</string>
+    <string name="sleep_apnea">Sleep Apnea</string>
+    <string name="sleepwalking">Sleepwalking</string>
+    <string name="stop_recording">Stop Recording</string>
 
 
 </resources>

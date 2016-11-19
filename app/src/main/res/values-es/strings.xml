@@ -1,37 +1,50 @@
 <resources>
 
     <string name="app_name">Cambie en Sueño</string>
-
-
+    <string name="helping_you_sleep_since_2016">Ayudándole a dormir desde 2016</string>
+    <string name="stop_recording"></string>
+    <string name="show_history"></string>
     <string name="vibration">Vibración</string>
     <string name="on">encienda</string>
     <string name="off">apague</string>
     <string name="language">Lengua</string>
     <string name="change">Cambiar</string>
-    <string name="profile">Perfil</string>
-    <string name="log_in">Entrar </string>
     <string name="alarm_volume">Volumen de Alarma</string>
     <string name="music_volume">Volumen de Música</string>
-    <string name="brightness">Brillo</string>
-
+    <string name="sleepwalking"></string>
     <string name="english">Inglés</string>
     <string name="spanish">Español</string>
+    <string name="sleep_apnea"></string>
 
+    <string name="start_recording">Empezar a Grabar</string>
 
-
-    <!-- Strings related to login -->
+    <string name="you_should_wake_at">Deberías despertarte</string>
+    <string name="set_alarm">Ajustar Alarma</string>
+    <string name="age">Años</string>
+    <string name="apnea">Apnea</string>
+    <string name="edit_work_schedule">Editar Horario de Trabajo</string>
+    <string name="weight">Peso</string>
+    <string name="settings">Ajustes</string>
+    <string name="night_shift">Turno de Noche</string>
+    <string name="permission_rationale">Se necesitan permisos de contactos para proporcionar terminaciones de correo electrónico.</string>
+    <string name="personal_data">Información Personal</string>
+    <string name="profile">Perfil</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña (opcional)</string>
-    <string name="action_sign_in">Iniciar sesión o registrarse</string>
-    <string name="action_sign_in_short">Iniciar sesión</string>
-    <string name="error_invalid_email">Esta email no es válida</string>
+    <string name="sign_up">Regístrate</string>
+    <string name="title_activity_login">cerrar sesión</string>
+    <string name="log_out">Cerrar Sesión</string>
+    <string name="log_in">iniciar sesión</string>
+    <string name="insomnia">Insomnio</string>
+    <string name="height">Altura</string>
+    <string name="gender">Género</string>
     <string name="error_invalid_password">Esta contraseña es demasiado corta</string>
+    <string name="error_invalid_email">Esta dirección de correo electrónico no es válida</string>
     <string name="error_incorrect_password">Esta contraseña es incorrecta</string>
     <string name="error_field_required">Este campo es requerido</string>
-    <string name="permission_rationale">"Permisos de contactos son necesarios para proporcionar
-        sugerencias de correo electrónico."
-    </string>
-
+    <string name="brightness">Brillo</string>
+    <string name="action_sign_in_short">Ingresa</string>
+    <string name="action_sign_in">Ingresa o Registro</string>
 
 
 </resources>
