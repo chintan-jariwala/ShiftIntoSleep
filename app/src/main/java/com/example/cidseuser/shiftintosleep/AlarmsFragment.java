@@ -126,10 +126,10 @@ public class AlarmsFragment extends Fragment {
         System.out.println(hour_difference);
         int totalSleep = (int)(hour_difference/90) ;
         if (totalSleep > 6)
-            totalSleep = 5;
+            totalSleep = 6;
         if (totalSleep < 4)
             totalSleep = 4;
-
+        System.out.println(totalSleep);
 
         double timetosleep_hour = ((wake_hour * 60 + wake_minute) - (totalSleep * 90) )/ 60.0;
             if (timetosleep_hour < 0)
@@ -146,6 +146,8 @@ public class AlarmsFragment extends Fragment {
         String smin = finaltimetosleep_minute + "";
         if (timetosleep_minute == 0)
             smin = "00";
+        if (timetosleep_minute < 10)
+            smin = "0" + timetosleep_minute;
         final String finalsmin = smin;
 
         final int timetowake_hour = wake_hour;
@@ -153,20 +155,22 @@ public class AlarmsFragment extends Fragment {
         String wmin = timetowake_minute + "";
         if (timetowake_minute == 0)
             wmin = "00";
+        if (timetowake_minute < 10)
+            wmin = "0" + timetowake_minute;
         final String finalwmin = wmin;
         tvWhentoWake.setText("You should sleep at "+finaltimetosleep_hour + ":" + finalsmin + " You should wake at "+timetowake_hour + ":" + finalwmin);
 
         System.out.println(finaltimetosleep_hour + "      " + finaltimetosleep_minute);
+        setAlarm(timetowake_hour, timetowake_minute);
+        setAlarm((int) finaltimetosleep_hour, (int) finaltimetosleep_minute);
+        Toast.makeText(getActivity(),"The alarm will wake you at "+timetowake_hour + ":" + finalwmin,Toast.LENGTH_LONG).show();
+        Toast.makeText(getActivity(),"The alarm will remind you to sleep at "+finaltimetosleep_hour + ":" + finalsmin,Toast.LENGTH_LONG).show();
 
-        btnSetAlarm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                setAlarm(timetowake_hour, timetowake_minute);
-                setAlarm((int) finaltimetosleep_hour, (int) finaltimetosleep_minute);
-            Toast.makeText(getActivity(),"The alarm will wake you at "+timetowake_hour + ":" + finalwmin,Toast.LENGTH_LONG).show();
-            Toast.makeText(getActivity(),"The alarm will remind you to sleep at "+finaltimetosleep_hour + ":" + finalsmin,Toast.LENGTH_LONG).show();
-            }
-        });
+//        btnSetAlarm.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//               }
+//        });
 
 
 
