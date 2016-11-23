@@ -5,8 +5,8 @@
     <string name="stop_recording">Para de Grabar</string>
     <string name="show_history">Mostrar Historial</string>
     <string name="vibration">Vibración</string>
-    <string name="on">encienda</string>
-    <string name="off">apague</string>
+    <string name="on">Encienda</string>
+    <string name="off">Apague</string>
     <string name="language">Lengua</string>
     <string name="change">Cambiar</string>
     <string name="alarm_volume">Volumen de Alarma</string>
@@ -32,9 +32,9 @@
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Contraseña (opcional)</string>
     <string name="sign_up">Regístrate</string>
-    <string name="title_activity_login">cerrar sesión</string>
+    <string name="title_activity_login">Cerrar sesión</string>
     <string name="log_out">Cerrar Sesión</string>
-    <string name="log_in">iniciar sesión</string>
+    <string name="log_in">Iniciar sesión</string>
     <string name="insomnia">Insomnio</string>
     <string name="height">Altura</string>
     <string name="gender">Género</string>
@@ -52,5 +52,30 @@
     <string name="lullabies_arent">Las canciones de cuna no son sólo para los bebés, sino que son perfectos para los adultos también. Escuchar música relajante antes de acostarse se ha demostrado que ayuda con los trastornos mejorando la calidad y cantidad del sueño. Relajarse antes de dormir ayuda a que su cerebro produzca ondas teta organizadas que le hacen sentir como si estuviera soñando ligeramente. Después de diez minutos de esto, su cerebro produce husillos de sueño, considerado dormir.</string>
     <string name="delete">Borrar</string>
     <string name="details">Detalles</string>
+    <string name="add">Añadir</string>
+    <string name="arrive_home">Llegar a Casa</string>
+    <string name="change_schedule">Programa de Cambios</string>
+    <string name="choose_day">Elige el Día</string>
+    <string name="graph">Grafica</string>
+    <string name="test">Prueba</string>
+    <string name="wake_time">Tiempo de Despertar</string>
+    <string name="alarms">Alarmas</string>
+    <string name="home">Principal</string>
+    <string name="lullaby">Canción de Cuna</string>
+    <string name="ocean">Oceano</string>
+    <string name="paused">en Pausa</string>
+    <string name="piano">Piano</string>
+    <string name="playing">Reproducción</string>
+    <string name="please_enter_all_values">Introduzca todos los valores</string>
+    <string name="rainforest">Selva</string>
+    <string name="select_time">Seleccione el Tiempo</string>
+    <string name="service_is_created">Se crea el servicio</string>
+    <string name="service_is_ended">El servicio ha terminado</string>
+    <string name="service_is_started">Se ha iniciado el servicio</string>
+    <string name="stats">Estadísticas</string>
+    <string name="tips">Consejos</string>
+    <string name="violin">Violín</string>
+    <string name="wake_up">¡Despertarse! ¡Despertarse!</string>
+    <string name="waterfall">Cascada</string>
 
 </resources>
